@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Messages reçus – EVOLIA</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:"Inter";src:url("assets/fonts/InterVariable.woff2") format("woff2");font-weight:100 900;font-display:swap}
+:root{
+  --nuit:#051F3A; --rouge:#8B0D22; --encre:#10253D; --ardoise:#52657A; --pale:#F3F6F8; --bordure:#DCE3E9; --blanc:#FFFFFF;
+  --bon:#1E6B47; --bon-fond:#E5F2EB; --verif:#8A5300; --verif-fond:#FBF0DB; --mauvais:#8B0D22; --mauvais-fond:#F7E5E8;
+}
+*{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--pale);color:var(--encre);font:15px/1.55 Inter,Arial,Helvetica,sans-serif}
+button,input{font:inherit}
+
+.entete{background:var(--nuit);border-top:6px solid var(--rouge)}
+.entete-in{max-width:1040px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px 16px;flex-wrap:wrap}
+.entete img{display:block;width:120px;height:auto}
+.entete-droite{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.etat-ia{display:inline-flex;align-items:center;gap:8px;color:#DCE4EC;font-size:13px;border:1px solid rgba(220,228,236,.35);border-radius:999px;padding:6px 12px}
+.etat-ia i{width:8px;height:8px;border-radius:50%;background:#7FD1A4;display:block}
+.etat-ia.off i{background:#E8B04B}
+.sortir{background:none;border:1px solid rgba(220,228,236,.35);color:#DCE4EC;border-radius:6px;padding:6px 12px;font-size:13px;cursor:pointer}
+.sortir:hover{background:rgba(255,255,255,.08)}
+
+main{max-width:1040px;margin:0 auto;padding:32px 16px 56px}
+h1{margin:0;font-size:clamp(26px,4vw,32px);line-height:1.15;color:var(--nuit)}
+.sous-titre{margin:6px 0 0;color:var(--ardoise)}
+.filet{width:48px;height:3px;border-radius:2px;background:var(--rouge);margin:18px 0 24px}
+
+.connexion{max-width:420px;background:var(--blanc);border:1px solid var(--bordure);border-radius:8px;padding:28px}
+.connexion label{display:block;font-weight:600;font-size:14px;margin:0 0 6px}
+.connexion input{width:100%;border:1px solid #8796A6;border-radius:6px;padding:10px 12px;min-height:46px;color:var(--encre);margin-bottom:16px}
+.connexion input:focus{outline:2px solid var(--nuit);outline-offset:2px}
+.connexion button{width:100%;min-height:46px;border:0;border-radius:6px;background:var(--rouge);color:var(--blanc);font-weight:600;cursor:pointer}
+.connexion button:hover{background:#6F0A1B}
+.connexion button[disabled]{opacity:.65;cursor:wait}
+.erreur-connexion{margin:12px 0 0;color:var(--rouge);font-weight:600;font-size:14px}
+.erreur-connexion:empty{display:none}
+
+.compteurs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+@media (min-width:760px){.compteurs{grid-template-columns:repeat(5,1fr)}}
+.compteur{background:var(--blanc);border:1px solid var(--bordure);border-top:4px solid var(--ardoise);border-radius:8px;padding:12px 14px;text-align:left;cursor:pointer;color:var(--encre)}
+.compteur b{display:block;font-size:26px;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--nuit)}
+.compteur span{font-size:13px;font-weight:600;color:var(--ardoise)}
+.compteur[data-filtre=bon]{border-top-color:var(--bon)}
+.compteur[data-filtre=a_verifier]{border-top-color:#C98A1B}
+.compteur[data-filtre=mauvais]{border-top-color:var(--mauvais)}
+.compteur[data-filtre=tous]{border-top-color:var(--nuit)}
+.compteur[aria-pressed=true]{outline:2px solid var(--nuit);outline-offset:1px}
+.compteur:focus-visible{outline:2px solid var(--nuit);outline-offset:3px}
+.options{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ardoise);margin:0 0 18px}
+.options input{width:18px;height:18px;accent-color:var(--nuit);margin:0}
+
+.vide{background:var(--blanc);border:1px dashed var(--bordure);border-radius:8px;padding:36px 20px;text-align:center;color:var(--ardoise)}
+.vide strong{display:block;color:var(--nuit);font-size:17px;margin-bottom:4px}
+.liste{display:grid;gap:14px}
+.msg{background:var(--blanc);border:1px solid var(--bordure);border-left:5px solid var(--ardoise);border-radius:8px;padding:18px 20px}
+@media (max-width:520px){.msg{padding:16px 14px}}
+.msg.v-bon{border-left-color:var(--bon)}
+.msg.v-a_verifier{border-left-color:#C98A1B}
+.msg.v-mauvais{border-left-color:var(--mauvais)}
+.msg.traite{opacity:.62}
+.ligne1{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-bottom:8px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;padding:3px 8px;background:var(--pale);color:var(--ardoise)}
+.badge.bon{background:var(--bon-fond);color:var(--bon)}
+.badge.a_verifier{background:var(--verif-fond);color:var(--verif)}
+.badge.mauvais{background:var(--mauvais-fond);color:var(--mauvais)}
+.badge .score{font-weight:600;letter-spacing:0;opacity:.85}
+.etiquette{font-size:12px;color:var(--ardoise);border:1px solid var(--bordure);border-radius:4px;padding:2px 7px}
+.etiquette.haute{border-color:var(--rouge);color:var(--rouge);font-weight:600}
+.date{margin-left:auto;font-size:13px;color:var(--ardoise);white-space:nowrap}
+.qui{margin:0;font-size:17px;font-weight:700;color:var(--nuit)}
+.qui span{font-weight:400;color:var(--ardoise)}
+.contact{margin:2px 0 0;font-size:14px;color:var(--ardoise);overflow-wrap:anywhere}
+.contact a{color:var(--nuit)}
+.adr{font-size:12px;font-weight:600;border-radius:4px;padding:1px 6px;margin-left:4px}
+.adr.fiable{background:var(--bon-fond);color:var(--bon)}
+.adr.personnelle{background:var(--pale);color:var(--ardoise)}
+.adr.douteuse{background:var(--verif-fond);color:var(--verif)}
+.adr.invalide{background:var(--mauvais-fond);color:var(--mauvais)}
+.resume{margin:12px 0 6px;font-weight:600}
+.raisons{margin:0 0 8px;padding-left:20px}
+.raisons li{margin:2px 0}
+.action{margin:0;font-size:14px}
+.action b{color:var(--nuit)}
+.alerte{margin:8px 0 0;font-size:14px;background:var(--verif-fond);color:var(--verif);border-radius:6px;padding:8px 10px}
+.attente{display:flex;align-items:center;gap:10px;color:var(--ardoise);margin:12px 0 4px}
+.roue{width:16px;height:16px;border:2px solid var(--bordure);border-top-color:var(--nuit);border-radius:50%;animation:tourne .9s linear infinite}
+@keyframes tourne{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.roue{animation:none}}
+details{margin-top:10px;border-top:1px solid var(--bordure);padding-top:10px}
+summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--nuit)}
+summary:focus-visible{outline:2px solid var(--nuit);outline-offset:2px}
+.texte{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--pale);border-radius:6px;padding:12px 14px;margin:10px 0 0;font-size:14px}
+.outils{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.btn{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;border-radius:6px;border:1px solid var(--nuit);background:var(--blanc);color:var(--nuit);font-size:14px;font-weight:600;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--pale)}
+.btn.plein{background:var(--nuit);color:var(--blanc)}
+.btn.plein:hover{background:#0B2D52}
+.btn.danger{border-color:var(--rouge);color:var(--rouge)}
+.btn.danger.confirme{background:var(--rouge);color:var(--blanc)}
+.btn:focus-visible{outline:2px solid var(--nuit);outline-offset:2px}
+.pied{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid var(--bordure)}
+.source{font-size:12px;color:var(--ardoise)}
+.bandeau{background:var(--mauvais-fond);color:var(--mauvais);border-radius:8px;padding:12px 14px;font-weight:600;margin-bottom:14px}
+</style>
+</head>
+<body>
+<header class="entete">
+  <div class="entete-in">
+    <a href="/"><img src="assets/logo-evolia-fond-bleu.svg" alt="EVOLIA by ISC, retour au site" width="120" height="57"></a>
+    <div class="entete-droite">
+      <span class="etat-ia" id="etat-ia" hidden><i></i><span></span></span>
+      <button type="button" class="sortir" id="sortir" hidden>Se déconnecter</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <h1>Messages reçus</h1>
+  <p class="sous-titre">Chaque message du formulaire du site est lu et trié par l'agent IA. Vous gardez toujours la décision finale.</p>
+  <div class="filet" aria-hidden="true"></div>
+
+  <form class="connexion" id="connexion">
+    <label for="mdp">Mot de passe de l'équipe</label>
+    <input type="password" id="mdp" autocomplete="current-password" required>
+    <button type="submit" id="entrer">Accéder aux messages</button>
+    <p class="erreur-connexion" id="erreur-connexion" role="alert"></p>
+  </form>
+
+  <div id="espace" hidden>
+    <div class="bandeau" id="bandeau" role="alert" hidden></div>
+    <div class="compteurs" role="group" aria-label="Filtrer par verdict">
+      <button type="button" class="compteur" data-filtre="tous" aria-pressed="true"><b id="n-tous">0</b><span>Tous</span></button>
+      <button type="button" class="compteur" data-filtre="bon" aria-pressed="false"><b id="n-bon">0</b><span>Bons</span></button>
+      <button type="button" class="compteur" data-filtre="a_verifier" aria-pressed="false"><b id="n-a_verifier">0</b><span>À vérifier</span></button>
+      <button type="button" class="compteur" data-filtre="mauvais" aria-pressed="false"><b id="n-mauvais">0</b><span>Mauvais</span></button>
+      <button type="button" class="compteur" data-filtre="en_cours" aria-pressed="false"><b id="n-en_cours">0</b><span>En cours d'analyse</span></button>
+    </div>
+    <label class="options"><input type="checkbox" id="masquer-traites"> Masquer les messages traités</label>
+    <div class="liste" id="liste" aria-live="polite"></div>
+  </div>
+</main>
+
+<script>
+(function () {
+  var API = "https://REF_PROJET.supabase.co/functions/v1/contact";
+  var VERDICTS = { bon: "Bon", a_verifier: "À vérifier", mauvais: "Mauvais" };
+  var CATEGORIES = {
+    demande_de_mission: "Demande de mission", partenariat: "Partenariat", atelier_formation: "Atelier ou formation",
+    candidature_benevolat: "Candidature", presse: "Presse", question: "Question", prospection_commerciale: "Démarchage",
+    spam: "Spam", hors_perimetre: "Hors périmètre", autre: "Autre"
+  };
+  var ADRESSES = { fiable: "adresse fiable", personnelle: "adresse personnelle", douteuse: "adresse douteuse", invalide: "adresse invalide" };
+
+  var motDePasse = "";
+  try { motDePasse = sessionStorage.getItem("evolia-tableau") || ""; } catch (e) {}
+  var filtre = "tous", masquerTraites = false, messages = [], dernierEtat = "", ouverts = {}, minuteur = null;
+  var liste = document.getElementById("liste");
+
+  function el(tag, cls, texte) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (texte != null) n.textContent = texte;
+    return n;
+  }
+  function dateLisible(iso) {
+    var d = new Date(iso);
+    return d.toLocaleDateString("fr-FR", { day: "numeric", month: "short" }) + " à " + d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+  }
+  function cleVerdict(m) { return m.statut === "en_cours" || !m.analyse ? "en_cours" : m.analyse.verdict; }
+
+  function appelApi(chemin, methode) {
+    return fetch(API + chemin, { method: methode || "GET", headers: { "x-evolia-mot-de-passe": motDePasse }, cache: "no-store" })
+      .then(function (r) {
+        if (r.status === 401) { deconnecter("Mot de passe incorrect."); throw new Error("401"); }
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      });
+  }
+
+  function bloc(m, cle, titre, contenu) {
+    var d = el("details");
+    d.open = !!ouverts[m.id + cle];
+    d.addEventListener("toggle", function () { ouverts[m.id + cle] = d.open; });
+    d.appendChild(el("summary", null, titre));
+    contenu.forEach(function (c) { d.appendChild(c); });
+    return d;
+  }
+  function bouton(texte, cls, action) {
+    var b = el("button", "btn" + (cls ? " " + cls : ""), texte);
+    b.type = "button";
+    b.addEventListener("click", action);
+    return b;
+  }
+
+  function carte(m) {
+    var a = m.analyse, v = cleVerdict(m);
+    var c = el("article", "msg v-" + v + (m.traite ? " traite" : ""));
+    var l1 = el("div", "ligne1");
+    if (v === "en_cours") l1.appendChild(el("span", "badge", "En cours"));
+    else {
+      var b = el("span", "badge " + v, VERDICTS[v] || v);
+      b.appendChild(el("span", "score", a.score + "/100"));
+      l1.appendChild(b);
+      if (a.categorie && a.source === "ia") l1.appendChild(el("span", "etiquette", CATEGORIES[a.categorie] || a.categorie));
+      if (a.priorite === "haute") l1.appendChild(el("span", "etiquette haute", "Priorité haute"));
+    }
+    if (m.langue === "en") l1.appendChild(el("span", "etiquette", "EN"));
+    if (m.traite) l1.appendChild(el("span", "etiquette", "Traité"));
+    l1.appendChild(el("span", "date", dateLisible(m.recu_le)));
+    c.appendChild(l1);
+
+    var qui = el("p", "qui", m.prenom + " " + m.nom);
+    if (m.organisation) qui.appendChild(el("span", null, " — " + m.organisation));
+    c.appendChild(qui);
+    var contact = el("p", "contact");
+    var lien = el("a", null, m.email);
+    lien.href = "mailto:" + m.email;
+    contact.appendChild(lien);
+    if (a && a.adresse_email) contact.appendChild(el("span", "adr " + a.adresse_email, ADRESSES[a.adresse_email] || a.adresse_email));
+    contact.appendChild(document.createTextNode(" · " + m.objet + (m.profil ? " · " + m.profil : "") + (m.telephone ? " · " + m.telephone : "")));
+    c.appendChild(contact);
+
+    if (v === "en_cours") {
+      var att = el("div", "attente");
+      att.appendChild(el("span", "roue"));
+      att.appendChild(el("span", null, "L'agent lit le message…"));
+      c.appendChild(att);
+    } else {
+      c.appendChild(el("p", "resume", a.resume));
+      var ul = el("ul", "raisons");
+      (a.raisons || []).forEach(function (r) { ul.appendChild(el("li", null, r)); });
+      c.appendChild(ul);
+      var act = el("p", "action");
+      act.appendChild(el("b", null, "Action conseillée : "));
+      act.appendChild(document.createTextNode(a.action_conseillee));
+      c.appendChild(act);
+      var verif = a.verifications && a.verifications.adresse;
+      if (verif && verif.suggestion) c.appendChild(el("p", "alerte", "Faute de frappe probable dans l'adresse : " + verif.suggestion + " ?"));
+    }
+
+    c.appendChild(bloc(m, "msg", "Voir le message complet", [el("div", "texte", m.message)]));
+    if (a && a.brouillon_reponse) {
+      var outils = el("div", "outils");
+      var dest = (a.verifications && a.verifications.adresse && a.verifications.adresse.suggestion) || m.email;
+      var rep = el("a", "btn plein", "Répondre avec ce brouillon");
+      rep.href = "mailto:" + dest + "?subject=" + encodeURIComponent("Re : " + m.objet + " – EVOLIA") + "&body=" + encodeURIComponent(a.brouillon_reponse);
+      outils.appendChild(rep);
+      var copier = bouton("Copier", null, function () {
+        navigator.clipboard.writeText(a.brouillon_reponse).then(function () {
+          copier.textContent = "Copié";
+          setTimeout(function () { copier.textContent = "Copier"; }, 1500);
+        });
+      });
+      outils.appendChild(copier);
+      c.appendChild(bloc(m, "rep", "Brouillon de réponse proposé par l'agent", [el("div", "texte", a.brouillon_reponse), outils]));
+    }
+
+    var pied = el("div", "pied");
+    var src = a ? (a.source === "ia" ? "Analysé par l'IA (" + (a.modele || "Claude") + ")" : "Analyse par règles") + (a.note ? " — " + a.note : "") : "";
+    pied.appendChild(el("span", "source", src));
+    var actions = el("div", "outils");
+    actions.style.marginTop = "0";
+    if (!m.traite) actions.appendChild(bouton("Marquer comme traité", null, function () { action(m.id, "traite"); }));
+    if (v !== "en_cours") actions.appendChild(bouton("Relancer l'analyse", null, function () { action(m.id, "reanalyser"); }));
+    var suppr = bouton("Supprimer", "danger", function () {
+      if (!suppr.classList.contains("confirme")) {
+        suppr.classList.add("confirme");
+        suppr.textContent = "Confirmer la suppression";
+        setTimeout(function () { suppr.classList.remove("confirme"); suppr.textContent = "Supprimer"; }, 4000);
+        return;
+      }
+      action(m.id, "supprimer");
+    });
+    actions.appendChild(suppr);
+    pied.appendChild(actions);
+    c.appendChild(pied);
+    return c;
+  }
+
+  function afficher() {
+    var n = { tous: messages.length, bon: 0, a_verifier: 0, mauvais: 0, en_cours: 0 };
+    messages.forEach(function (m) { n[cleVerdict(m)] = (n[cleVerdict(m)] || 0) + 1; });
+    Object.keys(n).forEach(function (k) { var x = document.getElementById("n-" + k); if (x) x.textContent = n[k]; });
+    var visibles = messages.filter(function (m) {
+      return (filtre === "tous" || cleVerdict(m) === filtre) && !(masquerTraites && m.traite);
+    });
+    liste.textContent = "";
+    if (!visibles.length) {
+      var vide = el("div", "vide");
+      vide.appendChild(el("strong", null, messages.length ? "Aucun message dans ce filtre" : "Aucun message pour l'instant"));
+      vide.appendChild(document.createTextNode(messages.length ? "Changez de filtre pour voir les autres messages." : "Les messages envoyés depuis le formulaire du site apparaîtront ici, avec le verdict de l'agent."));
+      liste.appendChild(vide);
+      return;
+    }
+    visibles.forEach(function (m) { liste.appendChild(carte(m)); });
+  }
+
+  function charger() {
+    return appelApi("/messages").then(function (j) {
+      document.getElementById("bandeau").hidden = true;
+      var etat = document.getElementById("etat-ia");
+      etat.hidden = false;
+      etat.classList.toggle("off", !j.ia_active);
+      etat.lastChild.textContent = j.ia_active ? "Agent IA activé · " + j.modele : "Sans clé API · tri par règles";
+      var s = JSON.stringify(j.messages);
+      if (s !== dernierEtat) { dernierEtat = s; messages = j.messages; afficher(); }
+    });
+  }
+  function boucle() {
+    charger().catch(function (e) {
+      if (e.message !== "401") { var b = document.getElementById("bandeau"); b.textContent = "Connexion au serveur impossible. Nouvel essai dans quelques secondes."; b.hidden = false; }
+    }).then(function () {
+      if (!motDePasse) return;
+      var enCours = messages.some(function (m) { return cleVerdict(m) === "en_cours"; });
+      minuteur = setTimeout(boucle, enCours ? 3000 : 20000);
+    });
+  }
+  function action(id, quoi) {
+    appelApi("/messages/" + encodeURIComponent(id) + "/" + quoi, "POST").then(charger).catch(function () {});
+  }
+
+  function entrer() {
+    document.getElementById("connexion").hidden = true;
+    document.getElementById("espace").hidden = false;
+    document.getElementById("sortir").hidden = false;
+    boucle();
+  }
+  function deconnecter(texte) {
+    motDePasse = "";
+    try { sessionStorage.removeItem("evolia-tableau"); } catch (e) {}
+    clearTimeout(minuteur);
+    messages = []; dernierEtat = "";
+    document.getElementById("espace").hidden = true;
+    document.getElementById("sortir").hidden = true;
+    document.getElementById("etat-ia").hidden = true;
+    document.getElementById("connexion").hidden = false;
+    document.getElementById("erreur-connexion").textContent = texte || "";
+    document.getElementById("mdp").value = "";
+    document.getElementById("mdp").focus();
+  }
+
+  document.getElementById("connexion").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var btn = document.getElementById("entrer");
+    motDePasse = document.getElementById("mdp").value;
+    btn.disabled = true;
+    document.getElementById("erreur-connexion").textContent = "";
+    appelApi("/messages").then(function () {
+      try { sessionStorage.setItem("evolia-tableau", motDePasse); } catch (e2) {}
+      entrer();
+    }).catch(function (err) {
+      if (err.message !== "401") document.getElementById("erreur-connexion").textContent = "Serveur injoignable. Réessayez dans un instant.";
+    }).then(function () { btn.disabled = false; });
+  });
+  document.getElementById("sortir").addEventListener("click", function () { deconnecter(""); });
+  [].forEach.call(document.querySelectorAll(".compteur"), function (b) {
+    b.addEventListener("click", function () {
+      filtre = b.getAttribute("data-filtre");
+      [].forEach.call(document.querySelectorAll(".compteur"), function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      afficher();
+    });
+  });
+  document.getElementById("masquer-traites").addEventListener("change", function (e) { masquerTraites = e.target.checked; afficher(); });
+
+  if (motDePasse) entrer(); else document.getElementById("mdp").focus();
+})();
+</script>
+</body>
+</html>
