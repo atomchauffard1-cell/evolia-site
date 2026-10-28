@@ -14,7 +14,7 @@ create table public.messages_contact (
   piege boolean not null default false,
   ip_hash text,
   statut text not null default 'en_cours' check (statut in ('en_cours', 'analyse')),
-  analyse jsonb,
+  tri jsonb, -- verdict de l'agent IA
   traite boolean not null default false
 );
 

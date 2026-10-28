@@ -220,6 +220,7 @@ function parRegles(adresse: VerifAdresse, s: ReturnType<typeof signauxMessage>, 
   if (!adresse.syntaxe_ok) { raisons.push("L'adresse e-mail n'est pas valide."); malus += 40; }
   else if (adresse.type_domaine === "jetable") { raisons.push("Adresse jetable (" + adresse.domaine + ")."); malus += 60; }
   else if (adresse.serveur_mail === false) { raisons.push("Le domaine " + adresse.domaine + " ne reçoit pas d'e-mails."); malus += 35; }
+  if (adresse.suggestion && adresse.serveur_mail === null) { raisons.push("Adresse probablement mal saisie."); malus += 25; }
   if (s.mots_spam.length) { raisons.push("Vocabulaire de spam : " + s.mots_spam.slice(0, 3).join(", ") + "."); malus += 30 * s.mots_spam.length; }
   if (s.nombre_liens >= 2) { raisons.push(s.nombre_liens + " liens dans le message."); malus += 25; }
   if (s.longueur_message < 40) { raisons.push("Message très court."); malus += 25; }

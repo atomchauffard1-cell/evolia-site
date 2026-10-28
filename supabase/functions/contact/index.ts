@@ -6,9 +6,10 @@
 //
 // Secrets à définir dans Supabase : ANTHROPIC_API_KEY, TABLEAU_MOT_DE_PASSE.
 
-import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.117.3";
 import { analyser, cleDisponible, type Formulaire, MODELE } from "./agent.ts";
+
+declare const EdgeRuntime: { waitUntil(tache: Promise<unknown>): void }; // fourni par Supabase
 
 const TABLE = "messages_contact";
 const CONSERVATION_MOIS = 12;
@@ -57,7 +58,7 @@ async function analyserEtEnregistrer(id: string): Promise<void> {
     const { data: m, error } = await db.from(TABLE).select("*").eq("id", id).single();
     if (error || !m) throw error ?? new Error("message introuvable");
     const analyse = await analyser(m as Formulaire);
-    await db.from(TABLE).update({ analyse, statut: "analyse" }).eq("id", id);
+    await db.from(TABLE).update({ tri: analyse, statut: "analyse" }).eq("id", id);
   } catch (err) {
     console.error("analyse impossible", id, err);
   }
@@ -118,7 +119,7 @@ async function tableau(req: Request, parties: string[]): Promise<Response> {
   }
   if (req.method === "GET" && parties.length === 1) {
     const { data, error } = await db.from(TABLE)
-      .select("id, recu_le, prenom, nom, email, telephone, organisation, profil, objet, message, langue, statut, analyse, traite")
+      .select("id, recu_le, prenom, nom, email, telephone, organisation, profil, objet, message, langue, statut, analyse:tri, traite")
       .order("recu_le", { ascending: false }).limit(500);
     if (error) return json(500, { erreur: "Lecture impossible." });
     return json(200, { messages: data, ia_active: cleDisponible(), modele: MODELE });
@@ -131,7 +132,7 @@ async function tableau(req: Request, parties: string[]): Promise<Response> {
       return json(error ? 500 : 200, { ok: !error });
     }
     if (action === "reanalyser") {
-      const { error } = await db.from(TABLE).update({ statut: "en_cours", analyse: null }).eq("id", id);
+      const { error } = await db.from(TABLE).update({ statut: "en_cours", tri: null }).eq("id", id);
       if (!error) EdgeRuntime.waitUntil(analyserEtEnregistrer(id));
       return json(error ? 500 : 200, { ok: !error });
     }
