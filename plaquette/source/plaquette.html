@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>EVOLIA – Plaquette de présentation</title>
+<!-- Source de la plaquette PDF. Pour la régénérer : voir README.md (impression A4 avec Chrome). -->
+<style>
+@font-face{font-family:"Lexend";src:url("../../assets/fonts/LexendVariable.woff2") format("woff2");font-weight:100 900}
+@page{size:A4;margin:0}
+:root{--nuit:#051F3A;--rouge:#8B0D22;--encre:#10253D;--ardoise:#52657A;--pale:#F3F6F8;--ligne:#D5DDE5}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font:400 9.6pt/1.55 "Lexend",Arial,sans-serif;color:var(--encre);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;break-after:page}
+.page:last-child{page-break-after:auto;break-after:auto}
+p{margin:0}
+.label{font-size:7.6pt;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--rouge);margin:0 0 3.5mm}
+.fort{color:var(--rouge)}
+
+/* page 1 : couverture */
+.couverture{color:#fff;background:var(--nuit)}
+.couverture::before{content:"";position:absolute;inset:0;background:
+ linear-gradient(90deg,rgba(5,31,58,.96) 0%,rgba(5,31,58,.86) 45%,rgba(5,31,58,.4) 100%),
+ linear-gradient(0deg,rgba(5,31,58,.95) 0%,rgba(5,31,58,0) 50%),
+ url("../../assets/orleans-cathedrale.jpg") 72% 20%/auto 100% no-repeat}
+.couverture>*{position:relative}
+.couverture .logo{position:absolute;top:20mm;left:20mm;width:72mm}
+.couverture .corps{position:absolute;left:20mm;right:20mm;bottom:68mm}
+.eyebrow{font-size:7.8pt;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#C9D4E0;margin-bottom:7mm}
+h1{font-size:30pt;line-height:1.06;letter-spacing:-.03em;font-weight:600;margin:0 0 7mm;max-width:150mm}
+.lead{font-size:11.5pt;line-height:1.55;color:#DCE4EC;max-width:130mm}
+.promesse{position:absolute;left:20mm;right:20mm;bottom:24mm;padding-top:6mm;border-top:.3mm solid rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:flex-end}
+.promesse .label{color:#C9D4E0;margin:0 0 2mm}
+.promesse .mots{font-size:19pt;font-weight:600;letter-spacing:-.02em;line-height:1.1}
+.promesse .version{font-size:7.6pt;color:#AFC0D2;text-align:right;line-height:1.6}
+
+/* page 2 */
+.contenu{padding:15mm 20mm 0}
+.entete-p2{display:flex;justify-content:space-between;align-items:center;padding-bottom:4mm;border-bottom:.3mm solid var(--nuit);margin-bottom:6mm}
+.entete-p2 img{width:40mm}
+.entete-p2 span{font-size:7.6pt;letter-spacing:.14em;text-transform:uppercase;color:var(--ardoise);font-weight:600}
+.tete{margin-bottom:4.5mm}
+.accroche{margin-bottom:3mm;font-size:18pt;line-height:1.08;letter-spacing:-.025em;font-weight:600;color:var(--nuit)}
+.accroche .fort{display:block}
+.intro{font-size:9pt;color:var(--ardoise);max-width:160mm}
+.domaines{display:grid;grid-template-columns:1fr 1fr;gap:0 10mm;margin-bottom:4.5mm}
+.domaines div{border-top:.25mm solid var(--ligne);padding:2.6mm 0 2.8mm}
+.domaines .num{font-size:7.4pt;font-weight:600;color:var(--rouge);letter-spacing:.08em}
+.domaines h3{margin:.6mm 0 .8mm;font-size:10.4pt;font-weight:600;color:var(--nuit);letter-spacing:-.01em}
+.domaines p{font-size:8.4pt;line-height:1.5;color:var(--ardoise)}
+.bande{background:var(--nuit);color:#fff;padding:4.5mm 6mm;display:grid;grid-template-columns:4fr 7fr;gap:6mm;align-items:center;margin-bottom:4.5mm}
+.bande .titre{font-size:13pt;font-weight:600;line-height:1.1;letter-spacing:-.02em}
+.bande .titre span{display:block;color:#AFC0D2;font-size:7.4pt;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1.5mm}
+.bande p{font-size:8.4pt;line-height:1.5;color:#DCE4EC}
+.principes{display:grid;grid-template-columns:1fr 1fr;gap:10mm;margin-bottom:4.5mm}
+.principes div{border-top:.5mm solid var(--nuit);padding-top:2.4mm}
+.principes b{display:block;font-size:9.6pt;color:var(--nuit);margin-bottom:.8mm}
+.principes p{font-size:8.2pt;line-height:1.5;color:var(--ardoise)}
+.personnes{margin-bottom:4mm}
+.personnes .label{margin-bottom:2mm}
+.personnes .ligne{display:grid;grid-template-columns:repeat(4,1fr);gap:5mm}
+.personnes .ligne div{border-top:.25mm solid var(--nuit);padding-top:2.4mm}
+.personnes b{display:block;font-size:9pt;color:var(--nuit)}
+.personnes span{display:block;font-size:7.6pt;line-height:1.4;color:var(--ardoise);margin-top:.6mm}
+.contact{position:absolute;left:0;right:0;bottom:0;background:var(--pale);padding:5mm 20mm 6mm}
+.contact .grille{display:grid;grid-template-columns:repeat(4,auto);justify-content:space-between;gap:6mm}
+.contact dt{font-size:6.8pt;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ardoise)}
+.contact dd{margin:.8mm 0 0;font-size:9pt;color:var(--nuit);font-weight:500}
+.contact .adresse{margin-top:3mm;padding-top:2.5mm;border-top:.25mm solid var(--ligne);font-size:7.6pt;color:var(--ardoise)}
+</style>
+</head>
+<body>
+
+<section class="page couverture">
+ <img class="logo" src="../../assets/logo-evolia.png" alt="EVOL’IA by ISC">
+ <div class="corps">
+  <p class="eyebrow">Association de conseil · ISC Paris, campus d’Orléans</p>
+  <h1>Des missions de conseil en IA et en données, conduites par des étudiants et encadrées.</h1>
+  <p class="lead">Nous aidons les organisations à explorer une problématique de données, d’IA ou de transformation numérique, dans le cadre d’une mission cadrée, pédagogique et encadrée.</p>
+ </div>
+ <div class="promesse">
+  <div>
+   <p class="label">Notre promesse</p>
+   <p class="mots">Cadrées. Pédagogiques. Encadrées.</p>
+  </div>
+  <p class="version">EVOLIA · Association loi 1901<br>24 rue Jeanne d’Arc, 45000 Orléans<br>Version 2 · octobre 2026</p>
+ </div>
+</section>
+
+<section class="page">
+ <div class="contenu">
+  <div class="entete-p2"><img src="logo-evolia-sombre.png" alt="EVOL’IA by ISC"><span>Plaquette de présentation</span></div>
+
+  <div class="tete">
+   <p class="label">Nos missions</p>
+   <p class="accroche">Une vraie question. <span class="fort">Une réponse argumentée.</span></p>
+   <p class="intro">EVOLIA permet aux étudiants de l’ISC Paris, campus d’Orléans, de mettre en pratique leurs compétences sur des problématiques réelles d’organisations. Chaque mission est un cas concret&nbsp;: une question posée, un périmètre défini, des livrables convenus à l’avance.</p>
+  </div>
+  <div class="domaines">
+   <div><span class="num">01</span><h3>Intelligence artificielle</h3><p>Explorer des usages de l’IA, tester des approches et des outils récents, documenter ce qui fonctionne et ses limites.</p></div>
+   <div><span class="num">02</span><h3>Données et Business Intelligence</h3><p>Analyser vos données, construire des tableaux de bord lisibles, relier chaque indicateur à sa source et à sa définition.</p></div>
+   <div><span class="num">03</span><h3>Transformation numérique</h3><p>Éclairer une décision d’évolution de vos outils ou de vos pratiques avec des recommandations argumentées.</p></div>
+   <div><span class="num">04</span><h3>Organisation et processus</h3><p>Cartographier un processus, repérer les points de blocage, proposer des améliorations réalistes.</p></div>
+  </div>
+
+  <div class="bande">
+   <p class="titre"><span>Sur mesure</span>Une mission construite avec vous.</p>
+   <p>Toute demande liée au conseil peut être étudiée&nbsp;: nous construisons la mission avec vous (question, périmètre, livrables, calendrier) et nous vous disons si elle est réalisable avec un encadrement adapté.</p>
+  </div>
+
+  <div class="principes">
+   <div><b>Confidentialité et IA</b><p>Chaque intervenant signe un engagement de confidentialité. Aucune donnée confidentielle ou personnelle n’est confiée à un outil externe sans autorisation écrite du client. Vous êtes informés de tout usage significatif de l’IA, et les livrables sont vérifiés par une personne compétente.</p></div>
+   <div><b>Nos limites</b><p>EVOLIA ne se substitue pas à un établissement d’enseignement ni aux professions réglementées&nbsp;: ni consultation juridique, ni tenue ou certification comptable.</p></div>
+  </div>
+
+  <div class="personnes">
+   <p class="label">L’équipe</p>
+   <div class="ligne">
+    <div><b>Atom Chauffard</b><span>Président et membre fondateur</span></div>
+    <div><b>Noéline Semur</b><span>Responsable développement</span></div>
+    <div><b>Léo Bezelga</b><span>Vice-président, trésorier et membre fondateur</span></div>
+    <div><b>Margaux Jérôme</b><span>Responsable communication</span></div>
+   </div>
+  </div>
+  <div class="personnes">
+   <p class="label">L’encadrement</p>
+   <div class="ligne">
+    <div><b>Pierre Barreaud</b><span>AI Transformation Officer, DG du campus d’Orléans</span></div>
+    <div><b>Marion Cina</b><span>Enseignante-chercheuse, innovation et créativité</span></div>
+    <div><b>Arthur Humez</b><span>Chef de projet, AI Transformation Office</span></div>
+    <div><b>Enzo Borrell</b><span>Responsable de l’engagement étudiant</span></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="contact">
+  <p class="label">Nous contacter · réponse sous 48&nbsp;h ouvrées</p>
+  <dl class="grille">
+   <div><dt>Contact</dt><dd>Atom Chauffard, président</dd></div>
+   <div><dt>Téléphone</dt><dd>06 34 41 09 26</dd></div>
+   <div><dt>E-mail</dt><dd>atom.chauffard@edu.iscparis.com</dd></div>
+   <div><dt>Instagram</dt><dd>@evolia.iscparis</dd></div>
+  </dl>
+ </div>
+</section>
+
+</body>
+</html>

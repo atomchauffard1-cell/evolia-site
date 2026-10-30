@@ -35,6 +35,7 @@
     <li><a href="#association"><span data-en="The association">L’association</span></a></li>
     <li><a href="#encadrement"><span data-en="Supervision">Encadrement</span></a></li>
     <li><a href="#equipe"><span data-en="Team">Équipe</span></a></li>
+    <li><a href="actualites"><span data-en="News">Actualités</span></a></li>
     <li class="lang" role="group" aria-label="Langue / Language"><button type="button" data-lang="fr" aria-pressed="true">FR</button><button type="button" data-lang="en" aria-pressed="false">EN</button></li>
     <li><a href="contact" class="cta"><span data-en="Contact us">Nous contacter</span></a></li>
    </ul>
@@ -44,6 +45,7 @@
 
 <main id="contenu">
 <section class="hero" id="accueil">
+ <button class="pause-anim" type="button" aria-pressed="false"><span class="vh"><span data-en="Pause the background animation">Mettre en pause l’animation de fond</span></span></button>
  <div class="wrap hero-corps">
   <p class="eyebrow"><span data-en="Consulting association · ISC Paris, Orléans campus">Association de conseil · ISC Paris, campus d’Orléans</span></p>
   <h1><span data-en="Consulting missions in AI and data, carried out by supervised students.">Des missions de conseil en IA et en données, conduites par des étudiants et encadrées.</span></h1>
@@ -165,6 +167,20 @@
  </div>
 </section>
 
+<section id="actualites" data-masquer-si-vide hidden>
+ <div class="wrap">
+  <div class="sec-tete revele">
+   <div>
+    <h2 class="label"><span data-en="News">Actualités</span></h2>
+    <p class="accroche"><span data-en="Life at the association, &lt;span class=&quot;fort&quot;&gt;month by month.&lt;/span&gt;">La vie de l’association, <span class="fort">au fil des mois.</span></span></p>
+   </div>
+   <p class="intro"><span data-en="Missions, events and workshops: the latest news from EVOLIA.">Missions, événements et ateliers : les dernières nouvelles d’EVOLIA.</span></p>
+  </div>
+  <ol class="actus" data-actualites="3"></ol>
+  <p class="actus-tout"><a class="lien-fleche" href="actualites"><span data-en="All news">Toutes les actualités</span></a></p>
+ </div>
+</section>
+
 <section class="appel" id="contact">
  <div class="wrap">
   <h2 class="revele"><span data-en="A project, a question?">Un projet, une question ?</span></h2>
@@ -187,6 +203,7 @@
    <li><a href="/#association"><span data-en="The association">L’association</span></a></li>
    <li><a href="/#encadrement"><span data-en="Supervision">Encadrement</span></a></li>
    <li><a href="/#equipe"><span data-en="Team">Équipe</span></a></li>
+   <li><a href="/actualites"><span data-en="News">Actualités</span></a></li>
    <li><a href="contact"><span data-en="Contact us">Nous contacter</span></a></li>
   </ul>
   <ul class="pied-nav">
@@ -196,11 +213,12 @@
  <div class="bandeau">
   <div class="wrap">
    <span>© 2026 EVOLIA</span>
-   <a href="mentions-legales"><span data-en="Legal notice">Mentions légales</span></a>
+   <span class="liens-legaux"><a href="mentions-legales"><span data-en="Legal notice">Mentions légales</span></a> <a href="accessibilite"><span data-en="Accessibility">Accessibilité</span></a></span>
   </div>
  </div>
 </footer>
 
+<script src="actualites.js" defer></script>
 <script>
 (function(){
  var lang='fr';
@@ -246,6 +264,11 @@
   function profondeur(){attente=false;var y=window.scrollY,hauteur=hero.offsetHeight;if(y>hauteur)return;hero.style.setProperty('--decalage',(y*.3).toFixed(1)+'px');hero.style.setProperty('--fondu',Math.min(1,Math.max(0,1-(y-hauteur*.4)/(hauteur*.5))).toFixed(3))}
   window.addEventListener('scroll',function(){if(!attente){attente=true;window.requestAnimationFrame(profondeur)}},{passive:true});
   if('IntersectionObserver' in window)new IntersectionObserver(function(e){hero.classList.toggle('hors-ecran',!e[0].isIntersecting)}).observe(hero);
+  // Bouton pause du zoom de la photo (choix mémorisé dans le navigateur)
+  var pause=document.querySelector('.pause-anim');
+  function appliquerPause(p){hero.classList.toggle('en-pause',p);pause.setAttribute('aria-pressed',String(p))}
+  try{appliquerPause(localStorage.getItem('evolia-pause')==='1')}catch(e){}
+  pause.addEventListener('click',function(){var p=pause.getAttribute('aria-pressed')!=='true';appliquerPause(p);try{localStorage.setItem('evolia-pause',p?'1':'0')}catch(e){}});
  }
  var b=document.querySelector('.burger'),n=document.getElementById('menu');
  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);h.classList.toggle('menu-ouvert',o)});

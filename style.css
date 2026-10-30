@@ -108,6 +108,13 @@ h2.label,h3.label,p.label{font-size:13px;line-height:1.4;font-weight:600;letter-
 .principes p{margin:0;padding-top:24px;border-top:2px solid var(--nuit);font-size:16px;color:var(--ardoise)}
 .principes strong{display:block;margin-bottom:10px;font-size:20px;letter-spacing:-.01em;color:var(--nuit)}
 
+/* actualités */
+.actus{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--ligne)}
+.actus li{display:grid;grid-template-columns:7fr 5fr;gap:8px 64px;align-items:baseline;padding:32px 0 36px;border-top:1px solid var(--ligne)}
+.actus time{grid-column:1;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--rouge)}
+.actus h3{grid-column:1;grid-row:2;font-size:clamp(22px,2.2vw,28px);line-height:1.2;letter-spacing:-.018em;font-weight:600}
+.actus p{grid-column:2;grid-row:2;margin:0;font-size:17px;color:var(--ardoise);max-width:34em}
+.actus-tout{margin:36px 0 0}
 /* bandeau « Notre promesse » */
 .manifeste{padding:112px 0 120px}
 .manifeste-mots{margin:8px 0 0;font-size:clamp(34px,11.5vw,144px);line-height:.98;letter-spacing:-.045em;font-weight:600;color:var(--nuit)}
@@ -145,6 +152,8 @@ label{display:block;font-weight:600;font-size:15px;margin:0 0 6px}
 input,textarea,select{width:100%;font:inherit;padding:12px 14px;border:1px solid #6E8194;border-radius:0;background:var(--blanc);color:var(--encre);margin-bottom:20px}
 select{appearance:none;-webkit-appearance:none;padding-right:40px;background:var(--blanc) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23051F3A' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center}
 textarea{min-height:150px;resize:vertical;display:block}
+input[type=file]{padding:10px;cursor:pointer}
+input[type=file]::file-selector-button{font:inherit;font-weight:600;font-size:14px;margin-right:14px;padding:8px 14px;border:1px solid var(--nuit);background:var(--blanc);color:var(--nuit);cursor:pointer}
 input:focus,textarea:focus,select:focus{outline:2px solid var(--nuit);outline-offset:1px}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
 .duo>div{min-width:0}
@@ -170,6 +179,19 @@ form button[disabled]{opacity:.65;cursor:wait}
 .ok{display:none;margin-top:16px;padding:14px 18px;border-left:4px solid var(--nuit);background:var(--blanc)}
 .ok.ko{border-left-color:var(--rouge)}
 
+/* délai de réponse et carte (page contact) */
+.delai{display:flex;align-items:center;gap:10px;margin:0 0 28px;font-weight:600;color:var(--nuit)}
+.delai::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--rouge);flex:none}
+.carte{margin:40px 0 0}
+.carte iframe{display:block;width:100%;height:260px;border:1px solid var(--ligne)}
+.carte figcaption{margin-top:8px;font-size:13px;color:var(--ardoise)}
+/* bouton pause du zoom de la photo d'accueil (visible seulement si les animations sont actives) */
+.pause-anim{display:none;position:absolute;z-index:2;top:96px;right:var(--marge);width:36px;height:36px;padding:0;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(5,31,58,.35);cursor:pointer}
+.anim .pause-anim{display:block}
+.pause-anim::before{content:"";position:absolute;inset:0;margin:auto;width:10px;height:12px;border-left:3px solid var(--blanc);border-right:3px solid var(--blanc);box-sizing:border-box}
+.pause-anim[aria-pressed="true"]::before{width:0;height:0;border:0;border-left:11px solid var(--blanc);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:13px}
+.pause-anim:hover{background:rgba(5,31,58,.6)}
+.anim .hero.en-pause::before{animation-play-state:paused}
 /* pages simples : contact et mentions légales */
 .page-simple main section{padding:96px 0 120px}
 .titre-page,.legal h1{font-size:clamp(40px,5vw,64px);line-height:1.06;letter-spacing:-.03em;font-weight:600;color:var(--nuit);margin:0 0 20px}
@@ -177,6 +199,8 @@ form button[disabled]{opacity:.65;cursor:wait}
 .legal{max-width:52em}
 .legal h3{font-size:20px;margin:40px 0 10px}
 .legal p{margin:0 0 10px;color:var(--encre);font-size:16px}
+.legal ul{margin:0 0 10px;padding-left:20px}
+.legal li{margin:0 0 8px;font-size:16px}
 .top-actions{display:flex;align-items:center;gap:24px}
 .retour{font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap}
 .retour:hover{text-decoration:underline}
@@ -192,6 +216,7 @@ footer a{color:var(--blanc);text-decoration:none}
 footer a:hover{text-decoration:underline}
 footer .bandeau{margin-top:64px;border-top:1px solid rgba(255,255,255,.12);padding:20px 0;font-size:14px}
 footer .bandeau .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 24px}
+.liens-legaux{display:flex;flex-wrap:wrap;gap:8px 24px}
 
 /* animations sobres */
 @keyframes monte{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
@@ -231,7 +256,8 @@ footer .bandeau .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;
 @media (max-width:1000px){
  .personnes{grid-template-columns:repeat(2,1fr)}
 }
-@media (max-width:860px){
+/* menu replié derrière le bouton « Menu » dès que la place manque */
+@media (max-width:1180px){
  .js .burger{display:block}
  header.top .wrap{flex-wrap:wrap;height:auto;min-height:76px}
  .js header.top .wrap{flex-wrap:nowrap;height:76px}
@@ -242,6 +268,8 @@ footer .bandeau .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;
  nav a{display:block;padding:10px 0}
  nav a.cta{display:inline-block;margin-top:8px}
  .lang{padding:10px 0}
+}
+@media (max-width:860px){
  section{padding:80px 0}
  .hero{min-height:0}
  .hero::before{background:linear-gradient(180deg,rgba(5,31,58,.55) 0%,rgba(5,31,58,.88) 55%,rgba(5,31,58,.97) 100%),url("assets/orleans-cathedrale-mobile.jpg") 62% top/cover no-repeat var(--nuit)}
@@ -253,6 +281,9 @@ footer .bandeau .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;
  .contact form{order:-1}
  .sec-tete{margin-bottom:48px}
  .domaines li{grid-template-columns:1fr;padding:28px 0 32px}
+ .actus li{grid-template-columns:1fr;padding:24px 0 28px}
+ .actus h3,.actus p{grid-column:1;grid-row:auto}
+ .actus p{margin-top:8px}
  .domaines h3,.domaines p{grid-column:1;grid-row:auto}
  .domaines p{margin-top:8px}
  .surmesure{padding:80px 0}

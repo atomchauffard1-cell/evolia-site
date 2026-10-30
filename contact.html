@@ -36,12 +36,17 @@
      <dt>Contact</dt><dd><span data-en="Atom Chauffard, president">Atom Chauffard, président</span></dd>
      <dt><span data-en="Email">E-mail</span></dt><dd><a href="mailto:atom.chauffard@edu.iscparis.com">atom.chauffard@edu.iscparis.com</a></dd>
      <dt><span data-en="Phone">Téléphone</span></dt><dd><a href="tel:+33634410926">06 34 41 09 26</a></dd>
-     <dt><span data-en="Brochure">Plaquette</span></dt><dd><a href="plaquette/EVOLIA_Plaquette_v01.pdf" class="pdf" download><span data-en="Download the brochure (PDF)">Télécharger la plaquette (PDF)</span></a></dd>
+     <dt><span data-en="Brochure">Plaquette</span></dt><dd><a href="plaquette/EVOLIA_Plaquette_v02.pdf" class="pdf" download><span data-en="Download the brochure (PDF)">Télécharger la plaquette (PDF)</span></a></dd>
      <dt>Instagram</dt><dd><a href="https://www.instagram.com/evolia.iscparis" rel="noopener" target="_blank">@evolia.iscparis<span class="vh" data-en=" (opens in a new tab)"> (nouvel onglet)</span></a></dd>
      <dt><span data-en="Head office">Siège</span></dt><dd>EVOLIA<br>24 rue Jeanne d’Arc<br>45000 Orléans<br><a href="https://www.openstreetmap.org/search?query=24%20rue%20Jeanne%20d%27Arc%2C%2045000%20Orl%C3%A9ans" rel="noopener" target="_blank"><span data-en="See on the map (OpenStreetMap)">Voir sur la carte (OpenStreetMap)</span><span class="vh" data-en=" (opens in a new tab)"> (nouvel onglet)</span></a></dd>
     </dl>
+    <figure class="carte">
+     <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=1.9001%2C47.8982%2C1.9121%2C47.9052&amp;layer=mapnik&amp;marker=47.90167%2C1.90610" title="Carte : ISC Paris, campus d’Orléans, 24 rue Jeanne d’Arc" loading="lazy" referrerpolicy="no-referrer"></iframe>
+     <figcaption><span data-en="Map © OpenStreetMap contributors">Carte © les contributeurs d’OpenStreetMap</span></figcaption>
+    </figure>
    </div>
    <form id="form" novalidate>
+    <p class="delai"><span data-en="Reply within 2 working days">Réponse sous 48 h ouvrées</span></p>
     <div class="duo">
      <div><label for="prenom"><span data-en="First name">Prénom</span></label>
       <input id="prenom" name="prenom" autocomplete="given-name" maxlength="80" required><p class="err" id="err-prenom"></p></div>
@@ -81,6 +86,8 @@
     </fieldset>
     <label for="msg"><span data-en="Your need">Votre besoin</span></label>
     <textarea id="msg" name="message" minlength="20" maxlength="5000" required></textarea><p class="err" id="err-msg"></p>
+    <label for="piece"><span data-en="Attachment &lt;span class=&quot;fac&quot;&gt;(optional · PDF or Word, 5 MB max)&lt;/span&gt;">Pièce jointe <span class="fac">(facultatif · PDF ou Word, 5 Mo max)</span></span></label>
+    <input id="piece" name="piece" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"><p class="err" id="err-piece"></p>
     <label class="accord" for="accord"><input type="checkbox" id="accord" name="consentement" required><span data-en="I agree that EVOLIA uses this information to answer my request. To be handled faster, my message is sorted with an artificial intelligence tool (Claude, by Anthropic). It is never sold or used for marketing. I can ask for its deletion at any time.">J’accepte qu’EVOLIA utilise ces informations pour répondre à ma demande. Pour être traité plus vite, mon message est trié à l’aide d’un outil d’intelligence artificielle (Claude, d’Anthropic). Il n’est ni revendu, ni utilisé pour de la prospection. Je peux demander sa suppression à tout moment.</span></label>
     <p class="err" id="err-accord"></p>
     <div class="hp" aria-hidden="true"><label>Ne pas remplir<input name="site" tabindex="-1" autocomplete="off"></label></div>
@@ -104,6 +111,7 @@
    <li><a href="/#association"><span data-en="The association">L’association</span></a></li>
    <li><a href="/#encadrement"><span data-en="Supervision">Encadrement</span></a></li>
    <li><a href="/#equipe"><span data-en="Team">Équipe</span></a></li>
+   <li><a href="/actualites"><span data-en="News">Actualités</span></a></li>
    <li><a href="contact"><span data-en="Contact us">Nous contacter</span></a></li>
   </ul>
   <ul class="pied-nav">
@@ -113,7 +121,7 @@
  <div class="bandeau">
   <div class="wrap">
    <span>© 2026 EVOLIA</span>
-   <a href="mentions-legales"><span data-en="Legal notice">Mentions légales</span></a>
+   <span class="liens-legaux"><a href="mentions-legales"><span data-en="Legal notice">Mentions légales</span></a> <a href="accessibilite"><span data-en="Accessibility">Accessibilité</span></a></span>
   </div>
  </div>
 </footer>
@@ -146,11 +154,16 @@
  var API='https://voylqdwqzvkydzdfxbob.supabase.co/functions/v1/contact';
  var MAIL='atom.chauffard@edu.iscparis.com';
  var M={
-  fr:{requis:'Ce champ est obligatoire.',email:'Saisissez une adresse e-mail valide, par exemple nom@entreprise.fr.',tel:'Saisissez un numéro valide, par exemple 06 12 34 56 78.',court:'Votre message est un peu court : 20 caractères minimum.',objet:'Choisissez l’objet de votre message.',accord:'Cochez cette case pour envoyer votre message.',merci:'Merci, votre message est bien parti. Un membre de l’équipe vous répondra à l’adresse indiquée.',echec:'L’envoi n’a pas abouti. Réessayez dans un instant, ou ',lien:'écrivez-nous par e-mail',sujet:'Contact depuis le site EVOLIA – '},
-  en:{requis:'This field is required.',email:'Enter a valid email address, for example name@company.com.',tel:'Enter a valid phone number.',court:'Your message is a little short: 20 characters minimum.',objet:'Choose the subject of your message.',accord:'Tick this box to send your message.',merci:'Thank you, your message has been sent. A member of the team will reply to the address you gave.',echec:'Sending failed. Please try again in a moment, or ',lien:'email us',sujet:'Contact from the EVOLIA website – '}
+  fr:{requis:'Ce champ est obligatoire.',email:'Saisissez une adresse e-mail valide, par exemple nom@entreprise.fr.',tel:'Saisissez un numéro valide, par exemple 06 12 34 56 78.',court:'Votre message est un peu court : 20 caractères minimum.',objet:'Choisissez l’objet de votre message.',accord:'Cochez cette case pour envoyer votre message.',merci:'Merci, votre message est bien parti. Un membre de l’équipe vous répondra sous 48 h ouvrées à l’adresse indiquée.',echec:'L’envoi n’a pas abouti. Réessayez dans un instant, ou ',lien:'écrivez-nous par e-mail',sujet:'Contact depuis le site EVOLIA – ',piece:'Pièce jointe : PDF ou Word uniquement, 5 Mo maximum.',envoiPiece:'Envoi de la pièce jointe…',pieceEchec:'La pièce jointe n’a pas pu être envoyée : vous pourrez nous la transmettre par e-mail en réponse à notre message.'},
+  en:{requis:'This field is required.',email:'Enter a valid email address, for example name@company.com.',tel:'Enter a valid phone number.',court:'Your message is a little short: 20 characters minimum.',objet:'Choose the subject of your message.',accord:'Tick this box to send your message.',merci:'Thank you, your message has been sent. A member of the team will reply within 2 working days to the address you gave.',echec:'Sending failed. Please try again in a moment, or ',lien:'email us',sujet:'Contact from the EVOLIA website – ',piece:'Attachment: PDF or Word only, 5 MB maximum.',envoiPiece:'Sending the attachment…',pieceEchec:'The attachment could not be sent: you can send it to us by email when replying to our message.'}
  };
  var f=document.getElementById('form'),ok=document.getElementById('ok'),bouton=document.getElementById('envoyer');
  var champs=['prenom','nom','mail','tel','msg','accord'];
+ // Pièce jointe facultative : PDF ou Word, 5 Mo maximum (le serveur vérifie aussi)
+ var champPiece=document.getElementById('piece');
+ var TYPES={pdf:'application/pdf',doc:'application/msword',docx:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'};
+ function typePiece(fichier){var ext=(fichier.name.split('.').pop()||'').toLowerCase();return TYPES[ext]||''}
+ function verifPiece(){var x=champPiece.files[0];return !x||(typePiece(x)&&x.size<=5242880)?'':M[lang].piece}
  function erreur(id,texte){
   var c=document.getElementById(id),e=document.getElementById('err-'+id);
   e.textContent=texte||'';
@@ -174,6 +187,7 @@
    erreur(id,m);
    if(m&&!premier)premier=c;
   });
+  var mp=verifPiece();erreur('piece',mp);if(mp&&!premier)premier=champPiece;
   var objet=f.querySelector('input[name=objet]:checked');
   document.getElementById('err-objet').textContent=objet?'':M[lang].objet;
   f.querySelector('.objet').classList.toggle('ko',!objet);
@@ -184,6 +198,7 @@
  f.addEventListener('input',function(e){
   var c=e.target;
   if(c.name==='objet'){document.getElementById('err-objet').textContent='';f.querySelector('.objet').classList.remove('ko');return}
+  if(c===champPiece){erreur('piece',verifPiece());return}
   if(c.classList.contains('ko'))erreur(c.id,message(c));
  });
  function donnees(){
@@ -206,12 +221,24 @@
   e.preventDefault();
   ok.style.display='none';ok.classList.remove('ko');
   if(!valider())return;
-  var d=donnees();
+  var d=donnees(),fichier=champPiece.files[0]||null;
+  if(fichier)d.piece={nom:fichier.name,type:typePiece(fichier),taille:fichier.size};
   bouton.disabled=true;
   fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
-   .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);
-    f.reset();ok.textContent=M[lang].merci;ok.style.display='block';ok.scrollIntoView({block:'nearest'})})
-   .catch(function(){echec(d)})
+   .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})
+   .then(function(rep){
+    // Le message est enregistré ; la pièce jointe part ensuite par le lien d'envoi à usage unique
+    if(!fichier)return true;
+    if(!rep.envoi)return false;
+    ok.textContent=M[lang].envoiPiece;ok.style.display='block';
+    return fetch(rep.envoi.url,{method:'PUT',headers:{'content-type':d.piece.type},body:fichier})
+     .then(function(r){return r.ok}).catch(function(){return false});
+   })
+   .then(function(pieceOk){
+    f.reset();
+    ok.textContent=M[lang].merci+(pieceOk?'':' '+M[lang].pieceEchec);
+    ok.style.display='block';ok.scrollIntoView({block:'nearest'});
+   },function(){echec(d)})
    .then(function(){bouton.disabled=false});
  });
 })();
