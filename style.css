@@ -55,10 +55,10 @@ nav a.cta:hover::before{transform:scaleX(1);transform-origin:left}
 .lien-fleche.clair{color:var(--blanc)}
 
 /* accueil : grande photo de la cathédrale */
-.hero{position:relative;isolation:isolate;overflow:hidden;margin-top:-76px;min-height:640px;min-height:max(640px,min(100svh,900px));display:flex;flex-direction:column;justify-content:flex-end;color:var(--blanc);background:var(--nuit)}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;translate:0 var(--decalage,0px);background:linear-gradient(90deg,rgba(5,31,58,.95) 0%,rgba(5,31,58,.82) 40%,rgba(5,31,58,.32) 100%),linear-gradient(0deg,rgba(5,31,58,.92) 0%,rgba(5,31,58,0) 45%),url("assets/orleans-cathedrale.jpg") 75% 30%/cover no-repeat var(--nuit)}
+.hero{position:relative;isolation:isolate;overflow:hidden;margin-top:-76px;padding:0;display:flex;flex-direction:column;color:var(--blanc);background:var(--nuit)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,31,58,.95) 0%,rgba(5,31,58,.82) 40%,rgba(5,31,58,.32) 100%),linear-gradient(0deg,rgba(5,31,58,.92) 0%,rgba(5,31,58,0) 45%),url("assets/orleans-cathedrale.jpg") 75% 30%/cover no-repeat var(--nuit)}
 .hero>.wrap{width:100%}
-.hero-corps{padding-top:160px;padding-bottom:64px;translate:0 calc(var(--decalage,0px) * -.35);opacity:var(--fondu,1)}
+.hero-corps{padding-top:124px;padding-bottom:64px}
 .eyebrow{font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#C9D4E0;margin:0 0 24px}
 .hero h1{font-size:clamp(40px,6vw,80px);line-height:1.04;letter-spacing:-.03em;font-weight:600;margin:0 0 28px;max-width:14em}
 .hero .lead{font-size:clamp(18px,1.6vw,21px);line-height:1.6;color:#DCE4EC;max-width:38em;margin:0 0 40px}
@@ -191,13 +191,6 @@ form button[disabled]{opacity:.65;cursor:wait}
 .carte{margin:40px 0 0}
 .carte iframe{display:block;width:100%;height:260px;border:1px solid var(--ligne)}
 .carte figcaption{margin-top:8px;font-size:13px;color:var(--ardoise)}
-/* bouton pause du zoom de la photo d'accueil (visible seulement si les animations sont actives) */
-.pause-anim{display:none;position:absolute;z-index:2;top:96px;right:var(--marge);width:36px;height:36px;padding:0;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(5,31,58,.35);cursor:pointer}
-.anim .pause-anim{display:block}
-.pause-anim::before{content:"";position:absolute;inset:0;margin:auto;width:10px;height:12px;border-left:3px solid var(--blanc);border-right:3px solid var(--blanc);box-sizing:border-box}
-.pause-anim[aria-pressed="true"]::before{width:0;height:0;border:0;border-left:11px solid var(--blanc);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:13px}
-.pause-anim:hover{background:rgba(5,31,58,.6)}
-.anim .hero.en-pause::before{animation-play-state:paused}
 /* pages simples : contact et mentions légales */
 .page-simple main section{padding:96px 0 120px}
 .titre-page,.legal h1{font-size:clamp(40px,5vw,64px);line-height:1.06;letter-spacing:-.03em;font-weight:600;color:var(--nuit);margin:0 0 20px}
@@ -235,12 +228,7 @@ footer .bandeau .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;
 
 /* animations sobres */
 @keyframes monte{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}
-@keyframes recadre{from{transform:scale(1.18)}to{transform:none}}
-@keyframes respire{from{transform:none}to{transform:scale(1.07)}}
 @keyframes rideau{from{clip-path:inset(100% 0 0 0);transform:translateY(60px)}to{clip-path:inset(-20% -5% -20% -5%);transform:none}}
-/* entrée de la photo d'accueil, puis zoom très lent et continu */
-.anim .hero::before{animation:recadre 3.4s cubic-bezier(.16,1,.3,1) both,respire 26s ease-in-out 3.4s infinite alternate}
-.anim .hero.hors-ecran::before{animation-play-state:paused}
 .anim .hero-corps>*,.anim .faits{animation:monte 1.2s cubic-bezier(.16,1,.3,1) both}
 .anim .hero-corps>:nth-child(1){animation-delay:.2s}
 .anim .hero h1{animation:none}
@@ -266,6 +254,18 @@ footer .bandeau .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;
 .anim .photo.revele img{transform:scale(1.15);transition:transform 2s cubic-bezier(.16,1,.3,1)}
 .anim .photo.revele.visible img{transform:none}
 @media print{.anim .revele,.anim .revele .fort,.anim .manifeste-mots span{opacity:1;transform:none;clip-path:none}}
+/* téléphone et tablette : uniquement des fondus et de légers glissements, que la puce graphique gère seule ;
+   ni zoom continu, ni effet rideau (redessin complet à chaque image), apparitions plus courtes */
+@media (max-width:860px),(hover:none){
+ .anim .hero h1>span{animation:monte .9s cubic-bezier(.16,1,.3,1) .3s both}
+ .anim .hero-corps>*,.anim .faits{animation-duration:.9s}
+ .anim .revele{transform:translateY(24px);transition-duration:.7s;transition-delay:calc(var(--i,0) * 70ms)}
+ .anim .manifeste-mots.revele span{clip-path:none;transform:translateY(.2em);transition:opacity .8s ease-out,transform .8s cubic-bezier(.16,1,.3,1)}
+ .anim .manifeste-mots.revele.visible span{clip-path:none}
+ .anim .photo.revele,.anim .photo.revele.visible{clip-path:none}
+ .anim .photo.revele img{transform:none;transition:none}
+ .anim .revele .accroche .fort,.anim .accroche.revele .fort{transition-duration:.7s;transition-delay:.2s}
+}
 
 /* écrans moyens et mobiles */
 @media (max-width:1000px){
@@ -286,9 +286,8 @@ footer .bandeau .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;
 }
 @media (max-width:860px){
  section{padding:80px 0}
- .hero{min-height:0}
  .hero::before{background:linear-gradient(180deg,rgba(5,31,58,.55) 0%,rgba(5,31,58,.88) 55%,rgba(5,31,58,.97) 100%),url("assets/orleans-cathedrale-mobile.jpg") 62% top/cover no-repeat var(--nuit)}
- .hero-corps{padding-top:136px;padding-bottom:48px}
+ .hero-corps{padding-top:112px;padding-bottom:48px}
  .faits{grid-template-columns:1fr}
  .faits div,.faits div+div{padding:16px 0;border-left:0}
  .faits div+div{border-top:1px solid rgba(255,255,255,.18)}
