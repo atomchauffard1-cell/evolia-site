@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact – EVOLIA</title>
+<meta name="description" content="Contactez EVOLIA, association de conseil étudiante de l’ISC Paris à Orléans : demande de mission, partenariat, atelier ou formation.">
+<meta name="theme-color" content="#051F3A">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/LexendVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body class="page-simple">
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="top">
+ <div class="wrap">
+  <a href="/" aria-label="EVOLIA, retour à l’accueil"><img src="assets/logo-evolia.png" alt="EVOL’IA by ISC" width="203" height="54"></a>
+  <div class="top-actions">
+   <a class="retour" href="/"><span aria-hidden="true">←</span> <span class="retour-txt" data-en="Back to the site">Retour au site</span></a>
+   <div class="lang" role="group" aria-label="Langue / Language"><button type="button" data-lang="fr" aria-pressed="true">FR</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+  </div>
+ </div>
+</header>
+
+<main id="contenu">
+<section id="contact">
+ <div class="wrap">
+  <h1 class="titre-page">Contact</h1>
+  <p class="intro"><span data-en="Describe your need in a few lines. We will get back to you to discuss it.">Décrivez-nous votre besoin en quelques lignes. Nous revenons vers vous pour en discuter.</span></p>
+  <div class="contact">
+   <div>
+    <dl class="coord">
+     <dt>Contact</dt><dd><span data-en="Atom Chauffard, president">Atom Chauffard, président</span></dd>
+     <dt><span data-en="Email">E-mail</span></dt><dd><a href="mailto:atom.chauffard@edu.iscparis.com">atom.chauffard@edu.iscparis.com</a></dd>
+     <dt><span data-en="Phone">Téléphone</span></dt><dd><a href="tel:+33634410926">06 34 41 09 26</a></dd>
+     <dt><span data-en="Brochure">Plaquette</span></dt><dd><a href="plaquette/EVOLIA_Plaquette_v01.pdf" class="pdf" download><span data-en="Download the brochure (PDF)">Télécharger la plaquette (PDF)</span></a></dd>
+     <dt>Instagram</dt><dd><a href="https://www.instagram.com/evolia.iscparis" rel="noopener" target="_blank">@evolia.iscparis<span class="vh" data-en=" (opens in a new tab)"> (nouvel onglet)</span></a></dd>
+     <dt><span data-en="Head office">Siège</span></dt><dd>EVOLIA<br>24 rue Jeanne d’Arc<br>45000 Orléans<br><a href="https://www.openstreetmap.org/search?query=24%20rue%20Jeanne%20d%27Arc%2C%2045000%20Orl%C3%A9ans" rel="noopener" target="_blank"><span data-en="See on the map (OpenStreetMap)">Voir sur la carte (OpenStreetMap)</span><span class="vh" data-en=" (opens in a new tab)"> (nouvel onglet)</span></a></dd>
+    </dl>
+   </div>
+   <form id="form" novalidate>
+    <div class="duo">
+     <div><label for="prenom"><span data-en="First name">Prénom</span></label>
+      <input id="prenom" name="prenom" autocomplete="given-name" maxlength="80" required><p class="err" id="err-prenom"></p></div>
+     <div><label for="nom"><span data-en="Last name">Nom</span></label>
+      <input id="nom" name="nom" autocomplete="family-name" maxlength="80" required><p class="err" id="err-nom"></p></div>
+    </div>
+    <label for="mail"><span data-en="Your email">Votre e-mail</span></label>
+    <input id="mail" name="email" type="email" autocomplete="email" maxlength="200" required><p class="err" id="err-mail"></p>
+    <div class="duo">
+     <div><label for="tel"><span data-en="Phone &lt;span class=&quot;fac&quot;&gt;(optional)&lt;/span&gt;">Téléphone <span class="fac">(facultatif)</span></span></label>
+      <input id="tel" name="telephone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40" pattern="[0-9 +.\(\)\-]{6,}"><p class="err" id="err-tel"></p></div>
+     <div><label for="orga"><span data-en="Organisation &lt;span class=&quot;fac&quot;&gt;(optional)&lt;/span&gt;">Organisation <span class="fac">(facultatif)</span></span></label>
+      <input id="orga" name="organisation" autocomplete="organization" maxlength="160"></div>
+    </div>
+    <label for="profil"><span data-en="You are &lt;span class=&quot;fac&quot;&gt;(optional)&lt;/span&gt;">Vous êtes <span class="fac">(facultatif)</span></span></label>
+    <select id="profil" name="profil">
+     <option value="" data-en="Choose">Choisir</option>
+     <option value="Entreprise" data-en="A company">Une entreprise</option>
+     <option value="Association" data-en="An association">Une association</option>
+     <option value="Collectivité ou administration" data-en="A local authority or public body">Une collectivité ou une administration</option>
+     <option value="Établissement d'enseignement" data-en="A school or university">Un établissement d’enseignement</option>
+     <option value="Étudiant" data-en="A student">Un étudiant</option>
+     <option value="Particulier" data-en="An individual">Un particulier</option>
+     <option value="Autre" data-en="Other">Autre</option>
+    </select>
+    <fieldset class="objet" aria-describedby="err-objet">
+     <legend><span data-en="Subject">Objet de votre message</span></legend>
+     <div class="puces">
+      <label class="puce"><input type="radio" name="objet" value="Demande de mission"><span data-en="Mission request">Demande de mission</span></label>
+      <label class="puce"><input type="radio" name="objet" value="Partenariat"><span data-en="Partnership">Partenariat</span></label>
+      <label class="puce"><input type="radio" name="objet" value="Atelier ou formation"><span data-en="Workshop or training">Atelier ou formation</span></label>
+      <label class="puce"><input type="radio" name="objet" value="Rejoindre l'association"><span data-en="Join the association">Rejoindre l’association</span></label>
+      <label class="puce"><input type="radio" name="objet" value="Presse"><span data-en="Press">Presse</span></label>
+      <label class="puce"><input type="radio" name="objet" value="Autre"><span data-en="Other">Autre</span></label>
+     </div>
+     <p class="err" id="err-objet"></p>
+    </fieldset>
+    <label for="msg"><span data-en="Your need">Votre besoin</span></label>
+    <textarea id="msg" name="message" minlength="20" maxlength="5000" required></textarea><p class="err" id="err-msg"></p>
+    <label class="accord" for="accord"><input type="checkbox" id="accord" name="consentement" required><span data-en="I agree that EVOLIA uses this information to answer my request. To be handled faster, my message is sorted with an artificial intelligence tool (Claude, by Anthropic). It is never sold or used for marketing. I can ask for its deletion at any time.">J’accepte qu’EVOLIA utilise ces informations pour répondre à ma demande. Pour être traité plus vite, mon message est trié à l’aide d’un outil d’intelligence artificielle (Claude, d’Anthropic). Il n’est ni revendu, ni utilisé pour de la prospection. Je peux demander sa suppression à tout moment.</span></label>
+    <p class="err" id="err-accord"></p>
+    <div class="hp" aria-hidden="true"><label>Ne pas remplir<input name="site" tabindex="-1" autocomplete="off"></label></div>
+    <button class="btn btn-r" type="submit" id="envoyer"><span data-en="Send">Envoyer</span></button>
+    <small><span data-en="Please do not send confidential data through this form. More in the &lt;a href=&quot;mentions-legales&quot;&gt;legal notice&lt;/a&gt;.">Ne nous envoyez pas de données confidentielles par ce formulaire. En savoir plus dans les <a href="mentions-legales">mentions légales</a>.</span></small>
+    <p class="ok" id="ok" role="status"></p>
+   </form>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap pied">
+  <div class="pied-id">
+   <img src="assets/logo-evolia.png" alt="EVOL’IA by ISC" width="203" height="54">
+   <p><span data-en="EVOLIA · Non-profit association (loi 1901)&lt;br&gt;24 rue Jeanne d’Arc, 45000 Orléans, France">EVOLIA · Association loi 1901<br>24 rue Jeanne d’Arc, 45000 Orléans</span></p>
+  </div>
+  <ul class="pied-nav">
+   <li><a href="/#missions"><span data-en="Missions">Missions</span></a></li>
+   <li><a href="/#association"><span data-en="The association">L’association</span></a></li>
+   <li><a href="/#encadrement"><span data-en="Supervision">Encadrement</span></a></li>
+   <li><a href="/#equipe"><span data-en="Team">Équipe</span></a></li>
+   <li><a href="contact"><span data-en="Contact us">Nous contacter</span></a></li>
+  </ul>
+  <ul class="pied-nav">
+   <li><a href="https://www.instagram.com/evolia.iscparis" rel="noopener" target="_blank">Instagram @evolia.iscparis<span class="vh" data-en=" (opens in a new tab)"> (nouvel onglet)</span></a></li>
+  </ul>
+ </div>
+ <div class="bandeau">
+  <div class="wrap">
+   <span>© 2026 EVOLIA</span>
+   <a href="mentions-legales"><span data-en="Legal notice">Mentions légales</span></a>
+  </div>
+ </div>
+</footer>
+
+<script>
+(function(){
+ var lang='fr';
+ var T={fr:{title:'Contact – EVOLIA',desc:'Contactez EVOLIA, association de conseil étudiante de l’ISC Paris à Orléans : demande de mission, partenariat, atelier ou formation.',home:'EVOLIA, retour à l’accueil',skip:'Aller au contenu'},
+  en:{title:'Contact – EVOLIA',desc:'Contact EVOLIA, the student consulting association of ISC Paris in Orléans: mission request, partnership, workshop or training.',home:'EVOLIA, back to the site',skip:'Skip to content'}};
+ function setLang(l){
+  lang=l;
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-en]').forEach(function(el){
+   if(el.dataset.fr===undefined)el.dataset.fr=el.innerHTML;
+   el.innerHTML=l==='en'?el.dataset.en:el.dataset.fr;
+  });
+  var t=T[l];
+  document.title=t.title;
+  var m=document.querySelector('meta[name=description]');if(m)m.setAttribute('content',t.desc);
+  document.querySelector('header.top > .wrap > a').setAttribute('aria-label',t.home);
+  document.querySelector('.skip').textContent=t.skip;
+  document.querySelectorAll('.lang button').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.lang===l)});
+  try{localStorage.setItem('evolia-lang',l)}catch(e){}
+ }
+ document.querySelector('.lang').addEventListener('click',function(e){var l=e.target.dataset&&e.target.dataset.lang;if(l)setLang(l)});
+ var saved=null;try{saved=localStorage.getItem('evolia-lang')}catch(e){}
+ if(saved==='en')setLang('en');
+ // Formulaire de contact : envoi au serveur Supabase, qui enregistre le message et le fait trier par l'agent IA.
+ // En cas d'échec, le visiteur peut toujours nous écrire par sa messagerie.
+ var API='https://voylqdwqzvkydzdfxbob.supabase.co/functions/v1/contact';
+ var MAIL='atom.chauffard@edu.iscparis.com';
+ var M={
+  fr:{requis:'Ce champ est obligatoire.',email:'Saisissez une adresse e-mail valide, par exemple nom@entreprise.fr.',tel:'Saisissez un numéro valide, par exemple 06 12 34 56 78.',court:'Votre message est un peu court : 20 caractères minimum.',objet:'Choisissez l’objet de votre message.',accord:'Cochez cette case pour envoyer votre message.',merci:'Merci, votre message est bien parti. Un membre de l’équipe vous répondra à l’adresse indiquée.',echec:'L’envoi n’a pas abouti. Réessayez dans un instant, ou ',lien:'écrivez-nous par e-mail',sujet:'Contact depuis le site EVOLIA – '},
+  en:{requis:'This field is required.',email:'Enter a valid email address, for example name@company.com.',tel:'Enter a valid phone number.',court:'Your message is a little short: 20 characters minimum.',objet:'Choose the subject of your message.',accord:'Tick this box to send your message.',merci:'Thank you, your message has been sent. A member of the team will reply to the address you gave.',echec:'Sending failed. Please try again in a moment, or ',lien:'email us',sujet:'Contact from the EVOLIA website – '}
+ };
+ var f=document.getElementById('form'),ok=document.getElementById('ok'),bouton=document.getElementById('envoyer');
+ var champs=['prenom','nom','mail','tel','msg','accord'];
+ function erreur(id,texte){
+  var c=document.getElementById(id),e=document.getElementById('err-'+id);
+  e.textContent=texte||'';
+  c.classList.toggle('ko',!!texte);
+  if(texte){c.setAttribute('aria-invalid','true');c.setAttribute('aria-describedby','err-'+id)}else c.removeAttribute('aria-invalid');
+ }
+ function message(c){
+  var v=c.validity,t=M[lang];
+  if(v.valueMissing)return c.type==='checkbox'?t.accord:t.requis;
+  if(v.typeMismatch)return t.email;
+  if(v.tooShort||(c.minLength>0&&c.value.length<c.minLength))return t.court;
+  if(v.patternMismatch)return t.tel;
+  return '';
+ }
+ function valider(){
+  var premier=null;
+  champs.forEach(function(id){
+   var c=document.getElementById(id);
+   if(c.type!=='checkbox')c.value=c.value.trim();
+   var m=message(c);
+   erreur(id,m);
+   if(m&&!premier)premier=c;
+  });
+  var objet=f.querySelector('input[name=objet]:checked');
+  document.getElementById('err-objet').textContent=objet?'':M[lang].objet;
+  f.querySelector('.objet').classList.toggle('ko',!objet);
+  if(!objet&&!premier)premier=f.querySelector('input[name=objet]');
+  if(premier)premier.focus();
+  return !premier;
+ }
+ f.addEventListener('input',function(e){
+  var c=e.target;
+  if(c.name==='objet'){document.getElementById('err-objet').textContent='';f.querySelector('.objet').classList.remove('ko');return}
+  if(c.classList.contains('ko'))erreur(c.id,message(c));
+ });
+ function donnees(){
+  var d={};
+  ['prenom','nom','email','telephone','organisation','profil','message','site'].forEach(function(k){d[k]=(f.elements[k].value||'').trim()});
+  var o=f.querySelector('input[name=objet]:checked');d.objet=o?o.value:'';
+  d.consentement=f.elements.consentement.checked;d.langue=lang;
+  return d;
+ }
+ function echec(d){
+  var s=M[lang].sujet+d.prenom+' '+d.nom;
+  var corps=d.message+'\n\n'+d.prenom+' '+d.nom+(d.organisation?' – '+d.organisation:'')+'\n'+d.email+(d.telephone?'\n'+d.telephone:'');
+  var a=document.createElement('a');
+  a.href='mailto:'+MAIL+'?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent(corps);
+  a.textContent=M[lang].lien;
+  ok.textContent=M[lang].echec;ok.appendChild(a);ok.appendChild(document.createTextNode('.'));
+  ok.classList.add('ko');ok.style.display='block';
+ }
+ f.addEventListener('submit',function(e){
+  e.preventDefault();
+  ok.style.display='none';ok.classList.remove('ko');
+  if(!valider())return;
+  var d=donnees();
+  bouton.disabled=true;
+  fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+   .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);
+    f.reset();ok.textContent=M[lang].merci;ok.style.display='block';ok.scrollIntoView({block:'nearest'})})
+   .catch(function(){echec(d)})
+   .then(function(){bouton.disabled=false});
+ });
+})();
+</script>
+</body>
+</html>

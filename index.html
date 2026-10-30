@@ -10,25 +10,33 @@
 <meta property="og:description" content="Des missions cadrées, pédagogiques et encadrées en IA, données et transformation numérique. ISC Paris, campus d’Orléans.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:image" content="assets/logo-evolia-fond-bleu.png">
+<meta property="og:image" content="assets/evolia-partage.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo EVOL’IA by ISC sur fond bleu nuit">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="preload" href="assets/fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/LexendVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/orleans-cathedrale.jpg" as="image" media="(min-width: 861px)" fetchpriority="high">
+<link rel="preload" href="assets/orleans-cathedrale-mobile.jpg" as="image" media="(max-width: 860px)" fetchpriority="high">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add("js");if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("anim")</script>
 </head>
-<body>
+<body class="accueil">
 <a class="skip" href="#contenu">Aller au contenu</a>
 
-<header class="top">
+<header class="top sur-photo">
  <div class="wrap">
-  <a href="#accueil" aria-label="EVOLIA, retour à l’accueil"><img src="assets/logo-evolia-fond-bleu.svg" alt="EVOLIA by ISC" width="114" height="54"></a>
+  <a href="#accueil" aria-label="EVOLIA, retour à l’accueil"><img src="assets/logo-evolia.png" alt="EVOL’IA by ISC" width="203" height="54"></a>
   <button class="burger" aria-expanded="false" aria-controls="menu">Menu</button>
   <nav id="menu" aria-label="Navigation principale">
    <ul>
-    <li><a href="#association"><span data-en="The association">L’association</span></a></li>
     <li><a href="#missions"><span data-en="Missions">Missions</span></a></li>
+    <li><a href="#association"><span data-en="The association">L’association</span></a></li>
+    <li><a href="#encadrement"><span data-en="Supervision">Encadrement</span></a></li>
     <li><a href="#equipe"><span data-en="Team">Équipe</span></a></li>
     <li class="lang" role="group" aria-label="Langue / Language"><button type="button" data-lang="fr" aria-pressed="true">FR</button><button type="button" data-lang="en" aria-pressed="false">EN</button></li>
-    <li><a href="#contact" class="cta"><span data-en="Contact us">Nous contacter</span></a></li>
+    <li><a href="contact" class="cta"><span data-en="Contact us">Nous contacter</span></a></li>
    </ul>
   </nav>
  </div>
@@ -36,163 +44,160 @@
 
 <main id="contenu">
 <section class="hero" id="accueil">
- <div class="wrap">
-  <div>
-   <p class="eyebrow"><span data-en="Consulting association · ISC Paris, Orléans campus">Association de conseil · ISC Paris, campus d’Orléans</span></p>
-   <h1><span data-en="Consulting missions in AI and data, carried out by supervised students.">Des missions de conseil en IA et en données, conduites par des étudiants et encadrées.</span></h1>
-   <p class="lead"><span data-en="We help organisations explore a data, AI or digital transformation question through a clearly scoped, educational and supervised mission.">Nous aidons les organisations à explorer une problématique de données, d’IA ou de transformation numérique, dans le cadre d’une mission cadrée, pédagogique et encadrée.</span></p>
-   <div class="btns">
-    <a class="btn btn-r" href="#contact"><span data-en="Tell us about your need">Parler de votre besoin</span></a>
-    <a class="btn btn-o" href="#missions"><span data-en="See our missions">Voir nos missions</span></a>
-   </div>
+ <div class="wrap hero-corps">
+  <p class="eyebrow"><span data-en="Consulting association · ISC Paris, Orléans campus">Association de conseil · ISC Paris, campus d’Orléans</span></p>
+  <h1><span data-en="Consulting missions in AI and data, carried out by supervised students.">Des missions de conseil en IA et en données, conduites par des étudiants et encadrées.</span></h1>
+  <p class="lead"><span data-en="We help organisations explore a data, AI or digital transformation question through a clearly scoped, educational and supervised mission.">Nous aidons les organisations à explorer une problématique de données, d’IA ou de transformation numérique, dans le cadre d’une mission cadrée, pédagogique et encadrée.</span></p>
+  <div class="btns">
+   <a class="btn btn-r" href="contact"><span data-en="Tell us about your need">Parler de votre besoin</span></a>
+   <a class="lien-fleche clair" href="#missions"><span data-en="See our missions">Voir nos missions</span></a>
   </div>
-  <aside aria-label="En bref">
-   <p><span data-en="Status">Statut</span></p><strong><span data-en="French non-profit (loi 1901)">Association loi 1901</span></strong>
-   <p><span data-en="Affiliation">Rattachement</span></p><strong><span data-en="ISC Paris, Orléans campus">ISC Paris, campus d’Orléans</span></strong>
-   <p><span data-en="Head office">Siège</span></p><strong><span data-en="Orléans, France">Orléans (45)</span></strong>
-  </aside>
+ </div>
+ <div class="wrap">
+  <dl class="faits">
+   <div><dt><span data-en="Status">Statut</span></dt><dd><span data-en="French non-profit (loi 1901)">Association loi 1901</span></dd></div>
+   <div><dt><span data-en="Affiliation">Rattachement</span></dt><dd><span data-en="ISC Paris, Orléans campus">ISC Paris, campus d’Orléans</span></dd></div>
+   <div><dt><span data-en="Head office">Siège</span></dt><dd><span data-en="Orléans, France">Orléans (45)</span></dd></div>
+  </dl>
+ </div>
+</section>
+
+<section id="missions">
+ <div class="wrap">
+  <div class="sec-tete revele">
+   <div>
+    <h2 class="label"><span data-en="Our missions">Nos missions</span></h2>
+    <p class="accroche"><span data-en="A real question. &lt;span class=&quot;fort&quot;&gt;A reasoned answer.&lt;/span&gt;">Une vraie question. <span class="fort">Une réponse argumentée.</span></span></p>
+   </div>
+   <p class="intro"><span data-en="Four areas of work, for public or private organisations.">Quatre domaines de travail, pour des organisations publiques ou privées.</span></p>
+  </div>
+  <ol class="domaines">
+   <li class="revele"><span class="num">01</span><h3><span data-en="Artificial intelligence">Intelligence artificielle</span></h3><p><span data-en="Explore uses of AI, test recent approaches and tools, document what works and where its limits are.">Explorer des usages de l’IA, tester des approches et des outils récents, documenter ce qui fonctionne et ses limites.</span></p></li>
+   <li class="revele"><span class="num">02</span><h3><span data-en="Data and Business Intelligence">Données et Business Intelligence</span></h3><p><span data-en="Analyse your data, build readable dashboards, link each indicator to its source and definition.">Analyser vos données, construire des tableaux de bord lisibles, relier chaque indicateur à sa source et à sa définition.</span></p></li>
+   <li class="revele"><span class="num">03</span><h3><span data-en="Digital transformation">Transformation numérique</span></h3><p><span data-en="Inform a decision about changing your tools or practices with reasoned recommendations.">Éclairer une décision d’évolution de vos outils ou de vos pratiques avec des recommandations argumentées.</span></p></li>
+   <li class="revele"><span class="num">04</span><h3><span data-en="Organisation and processes">Organisation et processus</span></h3><p><span data-en="Map a process, spot bottlenecks, propose realistic improvements.">Cartographier un processus, repérer les points de blocage, proposer des améliorations réalistes.</span></p></li>
+  </ol>
+ </div>
+</section>
+
+<section class="surmesure">
+ <div class="wrap">
+  <div class="revele">
+   <h3 class="label"><span data-en="Tailor-made missions">Des missions sur mesure</span></h3>
+   <p class="accroche"><span data-en="A mission &lt;span class=&quot;fort&quot;&gt;built with you.&lt;/span&gt;">Une mission <span class="fort">construite avec vous.</span></span></p>
+  </div>
+  <div class="revele">
+   <p><span data-en="Your need does not fit a category? Any consulting-related request can be considered. We build the mission with you: question, scope, deliverables and schedule, to suit your situation. We then tell you plainly whether it can be done with suitable supervision.">Votre besoin ne rentre pas dans une case ? Toute demande liée au conseil peut être étudiée. Nous construisons la mission avec vous : question, périmètre, livrables et calendrier, selon votre situation. Nous vous disons ensuite franchement si elle est réalisable avec un encadrement adapté.</span></p>
+   <a class="btn btn-blanc" href="contact"><span data-en="Submit a request">Nous soumettre une demande</span></a>
+  </div>
  </div>
 </section>
 
 <section id="association">
  <div class="wrap">
-  <h2><span data-en="The association">L’association</span></h2>
-  <p class="intro"><span data-en="EVOLIA lets students of ISC Paris, Orléans campus, put their skills to work on real organisational questions.">EVOLIA permet aux étudiants de l’ISC Paris, campus d’Orléans, de mettre en pratique leurs compétences sur des problématiques réelles d’organisations.</span></p>
-  <div class="two">
+  <div class="sec-tete revele">
    <div>
-    <p><span data-en="Each mission is a real case: a question asked by a company or organisation, a defined scope, deliverables agreed in advance.">Chaque mission est un cas concret : une question posée par une entreprise ou une organisation, un périmètre défini, des livrables convenus à l’avance.</span></p>
+    <h2 class="label"><span data-en="The association">L’association</span></h2>
+    <p class="accroche"><span data-en="Real cases. &lt;span class=&quot;fort&quot;&gt;Real deliverables.&lt;/span&gt;">De vrais cas. <span class="fort">De vrais livrables.</span></span></p>
+   </div>
+   <p class="intro"><span data-en="EVOLIA lets students of ISC Paris, Orléans campus, put their skills to work on real organisational questions.">EVOLIA permet aux étudiants de l’ISC Paris, campus d’Orléans, de mettre en pratique leurs compétences sur des problématiques réelles d’organisations.</span></p>
+  </div>
+  <div class="asso-corps">
+   <div class="texte revele">
+    <p><span data-en="Each mission is a real case: a question asked by a company or organisation, a defined scope, deliverables agreed in advance.">Chaque mission est un cas concret : une question posée par une entreprise ou une organisation, un périmètre défini, des livrables convenus à l’avance.</span></p>
     <p><span data-en="Missions are chosen for their educational value, the availability of suitable supervision and our ability to keep our commitments.">Les missions sont choisies selon leur intérêt pédagogique, la disponibilité d’un encadrement adapté et notre capacité à tenir nos engagements.</span></p>
    </div>
-   <div>
-    <ul class="check">
-     <li><span data-en="Non-profit association: any surplus is fully reinvested in its purpose.">Association à but non lucratif : les excédents sont intégralement réinvestis dans son objet.</span></li>
-     <li><span data-en="Student members, supervised missions.">Étudiants membres, missions encadrées.</span></li>
-     <li><span data-en="A written agreement for each mission: scope, deliverables, schedule, confidentiality and data.">Accord écrit pour chaque mission : périmètre, livrables, calendrier, confidentialité et données.</span></li>
-    </ul>
-   </div>
+   <ul class="engagements">
+    <li class="revele"><span data-en="Non-profit association: any surplus is fully reinvested in its purpose.">Association à but non lucratif : les excédents sont intégralement réinvestis dans son objet.</span></li>
+    <li class="revele"><span data-en="Student members, supervised missions.">Étudiants membres, missions encadrées.</span></li>
+    <li class="revele"><span data-en="A written agreement for each mission: scope, deliverables, schedule, confidentiality and data.">Accord écrit pour chaque mission : périmètre, livrables, calendrier, confidentialité et données.</span></li>
+   </ul>
   </div>
-  <div class="note"><span data-en="&lt;strong&gt;Our limits, stated plainly.&lt;/strong&gt; EVOLIA does not replace an educational institution or any regulated profession. We provide no legal advice and no bookkeeping or accounting certification."><strong>Nos limites, dites clairement.</strong> EVOLIA ne se substitue pas à un établissement d’enseignement ni aux professions réglementées. Nous ne faisons ni consultation juridique, ni tenue ou certification comptable.</span></div>
-  <div class="note"><span data-en="&lt;strong&gt;Confidentiality and AI.&lt;/strong&gt; Every team member signs a confidentiality agreement. No confidential or personal data is given to an external tool without the client’s written authorisation. You are told of any significant use of AI, and deliverables are checked by a competent person."><strong>Confidentialité et IA.</strong> Un engagement de confidentialité est signé par chaque intervenant. Aucune donnée confidentielle ou personnelle n’est confiée à un outil externe sans autorisation écrite du client. Vous êtes informés de tout usage significatif de l’IA, et les livrables sont vérifiés par une personne compétente.</span></div>
+  <p class="accroche accroche-principes revele"><span data-en="Clear about our limits. &lt;span class=&quot;fort&quot;&gt;Strict with your data.&lt;/span&gt;">Clairs sur nos limites. <span class="fort">Stricts sur vos données.</span></span></p>
+  <div class="principes">
+   <p class="revele"><span data-en="&lt;strong&gt;Our limits, stated plainly.&lt;/strong&gt; EVOLIA does not replace an educational institution or any regulated profession. We provide no legal advice and no bookkeeping or accounting certification."><strong>Nos limites, dites clairement.</strong> EVOLIA ne se substitue pas à un établissement d’enseignement ni aux professions réglementées. Nous ne faisons ni consultation juridique, ni tenue ou certification comptable.</span></p>
+   <p class="revele"><span data-en="&lt;strong&gt;Confidentiality and AI.&lt;/strong&gt; Every team member signs a confidentiality agreement. No confidential or personal data is given to an external tool without the client’s written authorisation. You are told of any significant use of AI, and deliverables are checked by a competent person."><strong>Confidentialité et IA.</strong> Un engagement de confidentialité est signé par chaque intervenant. Aucune donnée confidentielle ou personnelle n’est confiée à un outil externe sans autorisation écrite du client. Vous êtes informés de tout usage significatif de l’IA, et les livrables sont vérifiés par une personne compétente.</span></p>
+  </div>
  </div>
 </section>
 
-<section class="pale" id="missions">
+<section class="manifeste pale" aria-labelledby="promesse">
  <div class="wrap">
-  <h2><span data-en="Our missions">Nos missions</span></h2>
-  <p class="intro"><span data-en="Four areas of work, for public or private organisations.">Quatre domaines de travail, pour des organisations publiques ou privées.</span></p>
-  <div class="cols">
-   <article class="card"><span class="num">01</span><h3><span data-en="Artificial intelligence">Intelligence artificielle</span></h3><p><span data-en="Explore uses of AI, test recent approaches and tools, document what works and where its limits are.">Explorer des usages de l’IA, tester des approches et des outils récents, documenter ce qui fonctionne et ses limites.</span></p></article>
-   <article class="card"><span class="num">02</span><h3><span data-en="Data and Business Intelligence">Données et Business Intelligence</span></h3><p><span data-en="Analyse your data, build readable dashboards, link each indicator to its source and definition.">Analyser vos données, construire des tableaux de bord lisibles, relier chaque indicateur à sa source et à sa définition.</span></p></article>
-   <article class="card"><span class="num">03</span><h3><span data-en="Digital transformation">Transformation numérique</span></h3><p><span data-en="Inform a decision about changing your tools or practices with reasoned recommendations.">Éclairer une décision d’évolution de vos outils ou de vos pratiques avec des recommandations argumentées.</span></p></article>
-   <article class="card"><span class="num">04</span><h3><span data-en="Organisation and processes">Organisation et processus</span></h3><p><span data-en="Map a process, spot bottlenecks, propose realistic improvements.">Cartographier un processus, repérer les points de blocage, proposer des améliorations réalistes.</span></p></article>
+  <h2 class="label" id="promesse"><span data-en="Our promise">Notre promesse</span></h2>
+  <p class="manifeste-mots revele"><span data-en="Scoped.">Cadrées.</span> <span data-en="Educational.">Pédagogiques.</span> <span class="fort" data-en="Supervised.">Encadrées.</span></p>
+ </div>
+</section>
+
+<section id="encadrement">
+ <div class="wrap">
+  <div class="sec-tete revele">
+   <div>
+    <h2 class="label"><span data-en="Supervision">L’encadrement</span></h2>
+    <p class="accroche"><span data-en="Student energy. &lt;span class=&quot;fort&quot;&gt;ISC Paris standards.&lt;/span&gt;">L’énergie étudiante. <span class="fort">L’exigence de l’ISC Paris.</span></span></p>
+   </div>
+   <p class="intro"><span data-en="The ISC Paris staff who support EVOLIA and supervise its missions.">Les membres de l’ISC Paris qui accompagnent EVOLIA et encadrent ses missions.</span></p>
   </div>
-  <div class="custom"><h3><span data-en="Tailor-made missions">Des missions sur mesure</span></h3><p><span data-en="Your need does not fit a category? Any consulting-related request can be considered. We build the mission with you: question, scope, deliverables and schedule, to suit your situation. We then tell you plainly whether it can be done with suitable supervision.">Votre besoin ne rentre pas dans une case ? Toute demande liée au conseil peut être étudiée. Nous construisons la mission avec vous : question, périmètre, livrables et calendrier, selon votre situation. Nous vous disons ensuite franchement si elle est réalisable avec un encadrement adapté.</span></p><a class="btn btn-r" href="#contact"><span data-en="Submit a request">Nous soumettre une demande</span></a></div>
-  <div class="note"><span data-en="&lt;strong&gt;Also:&lt;/strong&gt; workshops, training, talks and applied research."><strong>Aussi :</strong> ateliers, formations, conférences et travaux de recherche appliquée.</span></div>
+  <ul class="personnes">
+   <li class="revele"><h3>Pierre Barreaud</h3><p><span data-en="AI Transformation Officer of the ISC Paris Group and Managing Director of the Orléans campus">AI Transformation Officer du Groupe ISC Paris et directeur général du campus d’Orléans</span></p><a class="lien-in" href="https://www.linkedin.com/in/pierrebarreaud/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span data-en="LinkedIn profile">Profil LinkedIn</span><span class="vh" data-en=" (opens in a new tab)"> (nouvel onglet)</span></a></li>
+   <li class="revele"><h3>Marion Cina</h3><p><span data-en="Lecturer and researcher in innovation and creativity, ISC Paris">Enseignante-chercheuse en innovation et créativité, ISC Paris</span></p><a class="lien-in" href="https://www.linkedin.com/in/marion-cina-87a850147/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span data-en="LinkedIn profile">Profil LinkedIn</span><span class="vh" data-en=" (opens in a new tab)"> (nouvel onglet)</span></a></li>
+   <li class="revele"><h3>Arthur Humez</h3><p><span data-en="Project manager, ISC Paris AI Transformation Office">Chef de projet à l’AI Transformation Office de l’ISC Paris</span></p><a class="lien-in" href="https://www.linkedin.com/in/arthur-humez/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span data-en="LinkedIn profile">Profil LinkedIn</span><span class="vh" data-en=" (opens in a new tab)"> (nouvel onglet)</span></a></li>
+   <li class="revele"><h3>Enzo Borrell</h3><p><span data-en="Head of student engagement, ISC Paris Orléans campus">Responsable de l’engagement étudiant, ISC Paris campus d’Orléans</span></p><a class="lien-in" href="https://www.linkedin.com/in/enzo-borrell/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span data-en="LinkedIn profile">Profil LinkedIn</span><span class="vh" data-en=" (opens in a new tab)"> (nouvel onglet)</span></a></li>
+  </ul>
  </div>
 </section>
 
 <section class="pale" id="equipe">
  <div class="wrap">
-  <h2><span data-en="The team">L’équipe</span></h2>
-  <p class="intro"><span data-en="The students who run EVOLIA.">Les étudiants qui font vivre EVOLIA.</span></p>
-  <figure class="photo"><img src="assets/equipe-evolia.jpg" width="1800" height="1202" loading="lazy" alt="Les quatre membres de l’équipe EVOLIA posant côte à côte devant un mur clair" data-alt-en="The four members of the EVOLIA team standing side by side in front of a light wall"></figure>
-  <div class="team">
-   <div class="person"><div class="ini" aria-hidden="true">AC</div><h3>Atom Chauffard</h3><p><span data-en="President and founding member">Président et membre fondateur</span></p></div>
-   <div class="person"><div class="ini" aria-hidden="true">LB</div><h3>Léo Bezelga</h3><p><span data-en="Vice-president, treasurer and founding member">Vice-président, trésorier et membre fondateur</span></p></div>
-   <div class="person"><div class="ini" aria-hidden="true">JM</div><h3>Jérôme Margaux</h3><p><span data-en="Head of communication">Responsable communication</span></p></div>
-   <div class="person"><div class="ini" aria-hidden="true">NS</div><h3>Noéline Semur</h3><p><span data-en="Head of development">Responsable développement</span></p></div>
-  </div>
- </div>
-</section>
-
-<section id="contact">
- <div class="wrap">
-  <h2>Contact</h2>
-  <p class="intro"><span data-en="Describe your need in a few lines. We will get back to you to discuss it.">Décrivez-nous votre besoin en quelques lignes. Nous revenons vers vous pour en discuter.</span></p>
-  <div class="contact">
+  <div class="sec-tete revele">
    <div>
-    <dl class="coord">
-     <dt>Contact</dt><dd><span data-en="Atom Chauffard, president">Atom Chauffard, président</span></dd>
-     <dt><span data-en="Email">E-mail</span></dt><dd><a href="mailto:atom.chauffard@edu.iscparis.com">atom.chauffard@edu.iscparis.com</a></dd>
-     <dt><span data-en="Phone">Téléphone</span></dt><dd><a href="tel:+33634410926">06 34 41 09 26</a></dd>
-     <dt><span data-en="Brochure">Plaquette</span></dt><dd><a href="plaquette/EVOLIA_Plaquette_v01.pdf" class="pdf" download><span data-en="Download the brochure (PDF)">Télécharger la plaquette (PDF)</span></a></dd>
-     <dt>Instagram</dt><dd><a href="https://www.instagram.com/evolia.iscparis" rel="noopener" target="_blank">@evolia.iscparis</a></dd>
-     <dt><span data-en="Head office">Siège</span></dt><dd>EVOLIA<br>24 rue Jeanne d’Arc<br>45000 Orléans<br><a href="https://www.openstreetmap.org/search?query=24%20rue%20Jeanne%20d%27Arc%2C%2045000%20Orl%C3%A9ans" rel="noopener" target="_blank"><span data-en="See on the map (OpenStreetMap)">Voir sur la carte (OpenStreetMap)</span></a></dd>
-    </dl>
+    <h2 class="label"><span data-en="The team">L’équipe</span></h2>
+    <p class="accroche"><span data-en="A student team, &lt;span class=&quot;fort&quot;&gt;committed to your questions.&lt;/span&gt;">Une équipe étudiante, <span class="fort">engagée sur vos sujets.</span></span></p>
    </div>
-   <form id="form" novalidate>
-    <div class="duo">
-     <div><label for="prenom"><span data-en="First name">Prénom</span></label>
-      <input id="prenom" name="prenom" autocomplete="given-name" maxlength="80" required><p class="err" id="err-prenom"></p></div>
-     <div><label for="nom"><span data-en="Last name">Nom</span></label>
-      <input id="nom" name="nom" autocomplete="family-name" maxlength="80" required><p class="err" id="err-nom"></p></div>
-    </div>
-    <label for="mail"><span data-en="Your email">Votre e-mail</span></label>
-    <input id="mail" name="email" type="email" autocomplete="email" maxlength="200" required><p class="err" id="err-mail"></p>
-    <div class="duo">
-     <div><label for="tel"><span data-en="Phone &lt;span class=&quot;fac&quot;&gt;(optional)&lt;/span&gt;">Téléphone <span class="fac">(facultatif)</span></span></label>
-      <input id="tel" name="telephone" type="tel" autocomplete="tel" inputmode="tel" maxlength="40" pattern="[0-9 +.\(\)\-]{6,}"><p class="err" id="err-tel"></p></div>
-     <div><label for="orga"><span data-en="Organisation &lt;span class=&quot;fac&quot;&gt;(optional)&lt;/span&gt;">Organisation <span class="fac">(facultatif)</span></span></label>
-      <input id="orga" name="organisation" autocomplete="organization" maxlength="160"></div>
-    </div>
-    <label for="profil"><span data-en="You are &lt;span class=&quot;fac&quot;&gt;(optional)&lt;/span&gt;">Vous êtes <span class="fac">(facultatif)</span></span></label>
-    <select id="profil" name="profil">
-     <option value="" data-en="Choose">Choisir</option>
-     <option value="Entreprise" data-en="A company">Une entreprise</option>
-     <option value="Association" data-en="An association">Une association</option>
-     <option value="Collectivité ou administration" data-en="A local authority or public body">Une collectivité ou une administration</option>
-     <option value="Établissement d'enseignement" data-en="A school or university">Un établissement d’enseignement</option>
-     <option value="Étudiant" data-en="A student">Un étudiant</option>
-     <option value="Particulier" data-en="An individual">Un particulier</option>
-     <option value="Autre" data-en="Other">Autre</option>
-    </select>
-    <fieldset class="objet" aria-describedby="err-objet">
-     <legend><span data-en="Subject">Objet de votre message</span></legend>
-     <div class="puces">
-      <label class="puce"><input type="radio" name="objet" value="Demande de mission"><span data-en="Mission request">Demande de mission</span></label>
-      <label class="puce"><input type="radio" name="objet" value="Partenariat"><span data-en="Partnership">Partenariat</span></label>
-      <label class="puce"><input type="radio" name="objet" value="Atelier ou formation"><span data-en="Workshop or training">Atelier ou formation</span></label>
-      <label class="puce"><input type="radio" name="objet" value="Rejoindre l'association"><span data-en="Join the association">Rejoindre l’association</span></label>
-      <label class="puce"><input type="radio" name="objet" value="Presse"><span data-en="Press">Presse</span></label>
-      <label class="puce"><input type="radio" name="objet" value="Autre"><span data-en="Other">Autre</span></label>
-     </div>
-     <p class="err" id="err-objet"></p>
-    </fieldset>
-    <label for="msg"><span data-en="Your need">Votre besoin</span></label>
-    <textarea id="msg" name="message" minlength="20" maxlength="5000" required></textarea><p class="err" id="err-msg"></p>
-    <label class="accord" for="accord"><input type="checkbox" id="accord" name="consentement" required><span data-en="I agree that EVOLIA uses this information to answer my request. To be handled faster, my message is sorted with an artificial intelligence tool (Claude, by Anthropic). It is never sold or used for marketing. I can ask for its deletion at any time.">J’accepte qu’EVOLIA utilise ces informations pour répondre à ma demande. Pour être traité plus vite, mon message est trié à l’aide d’un outil d’intelligence artificielle (Claude, d’Anthropic). Il n’est ni revendu, ni utilisé pour de la prospection. Je peux demander sa suppression à tout moment.</span></label>
-    <p class="err" id="err-accord"></p>
-    <div class="hp" aria-hidden="true"><label>Ne pas remplir<input name="site" tabindex="-1" autocomplete="off"></label></div>
-    <button class="btn btn-r" type="submit" id="envoyer"><span data-en="Send">Envoyer</span></button>
-    <small><span data-en="Please do not send confidential data through this form. More in the &lt;a href=&quot;#mentions&quot;&gt;legal notice&lt;/a&gt;.">Ne nous envoyez pas de données confidentielles par ce formulaire. En savoir plus dans les <a href="#mentions">mentions légales</a>.</span></small>
-    <p class="ok" id="ok" role="status"></p>
-   </form>
+   <p class="intro"><span data-en="The students who run EVOLIA.">Les étudiants qui font vivre EVOLIA.</span></p>
   </div>
+  <figure class="photo revele"><img src="assets/equipe-evolia.jpg" width="1800" height="1202" loading="lazy" decoding="async" alt="Les quatre membres de l’équipe EVOLIA posant côte à côte devant un mur clair" data-alt-en="The four members of the EVOLIA team standing side by side in front of a light wall"></figure>
+  <ul class="personnes">
+   <li class="revele"><h3>Atom Chauffard</h3><p><span data-en="President and founding member">Président et membre fondateur</span></p><a class="lien-in" href="https://www.linkedin.com/in/atom-chauffard-b7aaa935b/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span data-en="LinkedIn profile">Profil LinkedIn</span><span class="vh" data-en=" (opens in a new tab)"> (nouvel onglet)</span></a></li>
+   <li class="revele"><h3>Noéline Semur</h3><p><span data-en="Head of development">Responsable développement</span></p></li>
+   <li class="revele"><h3>Léo Bezelga</h3><p><span data-en="Vice-president, treasurer and founding member">Vice-président, trésorier et membre fondateur</span></p></li>
+   <li class="revele"><h3>Margaux Jérôme</h3><p><span data-en="Head of communication">Responsable communication</span></p></li>
+  </ul>
  </div>
 </section>
 
-<section class="pale" id="mentions">
- <div class="wrap legal">
-  <h2><span data-en="Legal notice">Mentions légales</span></h2>
-  <h3><span data-en="Site publisher">Éditeur du site</span></h3>
-  <p><span data-en="EVOLIA, an association governed by the French law of 1 July 1901, affiliated with ISC Paris, Orléans campus.&lt;br&gt;Registered office: 24 rue Jeanne d’Arc, 45000 Orléans, France.&lt;br&gt;RNA / SIRET number: &lt;strong&gt;[to be completed]&lt;/strong&gt;.">EVOLIA, association régie par la loi du 1er juillet 1901, rattachée à l’ISC Paris, campus d’Orléans.<br>Siège social : 24 rue Jeanne d’Arc, 45000 Orléans.<br>Numéro RNA / SIRET : <strong>[à compléter]</strong>.</span></p>
-  <h3><span data-en="Publication director">Directeur de la publication</span></h3>
-  <p><span data-en="Atom Chauffard, president. Contact: atom.chauffard@edu.iscparis.com, +33 6 34 41 09 26.">Atom Chauffard, président. Contact : atom.chauffard@edu.iscparis.com, 06 34 41 09 26.</span></p>
-  <h3><span data-en="Hosting">Hébergement</span></h3>
-  <p><span data-en="Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA.&lt;br&gt;Contact form: Supabase (servers in Paris, European Union).">Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis.<br>Formulaire de contact : Supabase (serveurs à Paris, Union européenne).</span></p>
-  <h3><span data-en="Personal data and cookies">Données personnelles et cookies</span></h3>
-  <p><span data-en="This site uses no cookies and no analytics. Messages sent through the contact form are stored by Supabase (servers in Paris, European Union) and kept for 12 months at most. To be handled faster, they are sorted by an artificial intelligence tool, Claude, from Anthropic (United States), which does not use this data to train its models. They are used only to answer your request. To exercise your rights of access, rectification or deletion, write to the address above.">Ce site n’utilise aucun cookie et aucun outil de statistiques. Les messages envoyés par le formulaire de contact sont enregistrés chez Supabase (serveurs à Paris, Union européenne) et conservés 12 mois au maximum. Pour être traités plus vite, ils sont triés par un outil d’intelligence artificielle, Claude, de la société Anthropic (États-Unis), qui n’utilise pas ces données pour entraîner ses modèles. Ils servent uniquement à répondre à votre demande. Pour exercer vos droits d’accès, de rectification ou de suppression, écrivez à l’adresse ci-dessus.</span></p>
-  <h3><span data-en="Intellectual property">Propriété intellectuelle</span></h3>
-  <p><span data-en="The EVOLIA name, logo and the content of this site belong to the association. Reproduction without permission is prohibited. Client or partner logos and references are published only with their written consent.">Le nom, le logo EVOLIA et les contenus de ce site sont la propriété de l’association. Toute reproduction sans autorisation est interdite. Les logos et références de clients ou partenaires ne sont publiés qu’avec leur accord écrit.</span></p>
+<section class="appel" id="contact">
+ <div class="wrap">
+  <h2 class="revele"><span data-en="A project, a question?">Un projet, une question ?</span></h2>
+  <div class="appel-bas revele">
+   <p class="intro"><span data-en="Describe your need in a few lines. We will get back to you to discuss it.">Décrivez-nous votre besoin en quelques lignes. Nous revenons vers vous pour en discuter.</span></p>
+   <a class="btn btn-blanc" href="contact"><span data-en="Contact us">Nous contacter</span></a>
+  </div>
  </div>
 </section>
 </main>
 
 <footer>
- <div class="wrap">
-  <img src="assets/logo-evolia-fond-bleu.svg" alt="EVOLIA by ISC" width="114" height="54">
-  <p><span data-en="EVOLIA · Non-profit association (loi 1901)&lt;br&gt;24 rue Jeanne d’Arc, 45000 Orléans, France&lt;br&gt;&lt;a href=&quot;#mentions&quot;&gt;Legal notice&lt;/a&gt;">EVOLIA · Association loi 1901<br>24 rue Jeanne d’Arc, 45000 Orléans<br><a href="#mentions"><span data-en="Legal notice">Mentions légales</span></a></span></p>
-  <p><a href="https://www.instagram.com/evolia.iscparis" rel="noopener" target="_blank">Instagram @evolia.iscparis</a></p>
+ <div class="wrap pied">
+  <div class="pied-id">
+   <img src="assets/logo-evolia.png" alt="EVOL’IA by ISC" width="203" height="54">
+   <p><span data-en="EVOLIA · Non-profit association (loi 1901)&lt;br&gt;24 rue Jeanne d’Arc, 45000 Orléans, France">EVOLIA · Association loi 1901<br>24 rue Jeanne d’Arc, 45000 Orléans</span></p>
+  </div>
+  <ul class="pied-nav">
+   <li><a href="/#missions"><span data-en="Missions">Missions</span></a></li>
+   <li><a href="/#association"><span data-en="The association">L’association</span></a></li>
+   <li><a href="/#encadrement"><span data-en="Supervision">Encadrement</span></a></li>
+   <li><a href="/#equipe"><span data-en="Team">Équipe</span></a></li>
+   <li><a href="contact"><span data-en="Contact us">Nous contacter</span></a></li>
+  </ul>
+  <ul class="pied-nav">
+   <li><a href="https://www.instagram.com/evolia.iscparis" rel="noopener" target="_blank">Instagram @evolia.iscparis<span class="vh" data-en=" (opens in a new tab)"> (nouvel onglet)</span></a></li>
+  </ul>
+ </div>
+ <div class="bandeau">
+  <div class="wrap">
+   <span>© 2026 EVOLIA</span>
+   <a href="mentions-legales"><span data-en="Legal notice">Mentions légales</span></a>
+  </div>
  </div>
 </footer>
 
@@ -221,82 +226,32 @@
  document.querySelector('.lang').addEventListener('click',function(e){var l=e.target.dataset&&e.target.dataset.lang;if(l)setLang(l)});
  var saved=null;try{saved=localStorage.getItem('evolia-lang')}catch(e){}
  if(saved==='en')setLang('en');
+ // En-tête transparent sur la photo d'accueil, bleu nuit dès qu'on fait défiler
+ var h=document.querySelector('header.top');
+ function etat(){h.classList.toggle('defile',window.scrollY>24)}
+ etat();window.addEventListener('scroll',etat,{passive:true});
+ // Apparition douce des blocs quand ils arrivent à l'écran ; les éléments d'une même liste se suivent
+ if(document.documentElement.classList.contains('anim')){
+  var blocs=document.querySelectorAll('.revele');
+  blocs.forEach(function(el){var i=0,v=el.previousElementSibling;while(v){if(v.classList.contains('revele'))i++;v=v.previousElementSibling}el.style.setProperty('--i',Math.min(i,6))});
+  if('IntersectionObserver' in window){
+   // Les blocs se rejouent à chaque passage : ils apparaissent en entrant à l'écran
+   // et se réinitialisent seulement une fois complètement sortis (pas de saut visible)
+   var entree=new IntersectionObserver(function(entrees){entrees.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')})},{rootMargin:'0px 0px -8% 0px',threshold:.12});
+   var sortie=new IntersectionObserver(function(entrees){entrees.forEach(function(e){if(!e.isIntersecting)e.target.classList.remove('visible')})},{threshold:0});
+   blocs.forEach(function(el){entree.observe(el);sortie.observe(el)});
+  }else blocs.forEach(function(el){el.classList.add('visible')});
+  // Photo d'accueil qui défile plus lentement que la page, texte qui s'efface en douceur
+  var hero=document.querySelector('.hero'),attente=false;
+  function profondeur(){attente=false;var y=window.scrollY,hauteur=hero.offsetHeight;if(y>hauteur)return;hero.style.setProperty('--decalage',(y*.3).toFixed(1)+'px');hero.style.setProperty('--fondu',Math.min(1,Math.max(0,1-(y-hauteur*.4)/(hauteur*.5))).toFixed(3))}
+  window.addEventListener('scroll',function(){if(!attente){attente=true;window.requestAnimationFrame(profondeur)}},{passive:true});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(e){hero.classList.toggle('hors-ecran',!e[0].isIntersecting)}).observe(hero);
+ }
  var b=document.querySelector('.burger'),n=document.getElementById('menu');
- b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
- n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.setAttribute('aria-expanded','false')}});
- // Formulaire de contact : envoi au serveur Supabase, qui enregistre le message et le fait trier par l'agent IA.
- // En cas d'échec, le visiteur peut toujours nous écrire par sa messagerie.
- var API='https://voylqdwqzvkydzdfxbob.supabase.co/functions/v1/contact';
- var MAIL='atom.chauffard@edu.iscparis.com';
- var M={
-  fr:{requis:'Ce champ est obligatoire.',email:'Saisissez une adresse e-mail valide, par exemple nom@entreprise.fr.',tel:'Saisissez un numéro valide, par exemple 06 12 34 56 78.',court:'Votre message est un peu court : 20 caractères minimum.',objet:'Choisissez l’objet de votre message.',accord:'Cochez cette case pour envoyer votre message.',merci:'Merci, votre message est bien parti. Un membre de l’équipe vous répondra à l’adresse indiquée.',echec:'L’envoi n’a pas abouti. Réessayez dans un instant, ou ',lien:'écrivez-nous par e-mail',sujet:'Contact depuis le site EVOLIA – '},
-  en:{requis:'This field is required.',email:'Enter a valid email address, for example name@company.com.',tel:'Enter a valid phone number.',court:'Your message is a little short: 20 characters minimum.',objet:'Choose the subject of your message.',accord:'Tick this box to send your message.',merci:'Thank you, your message has been sent. A member of the team will reply to the address you gave.',echec:'Sending failed. Please try again in a moment, or ',lien:'email us',sujet:'Contact from the EVOLIA website – '}
- };
- var f=document.getElementById('form'),ok=document.getElementById('ok'),bouton=document.getElementById('envoyer');
- var champs=['prenom','nom','mail','tel','msg','accord'];
- function erreur(id,texte){
-  var c=document.getElementById(id),e=document.getElementById('err-'+id);
-  e.textContent=texte||'';
-  c.classList.toggle('ko',!!texte);
-  if(texte){c.setAttribute('aria-invalid','true');c.setAttribute('aria-describedby','err-'+id)}else c.removeAttribute('aria-invalid');
- }
- function message(c){
-  var v=c.validity,t=M[lang];
-  if(v.valueMissing)return c.type==='checkbox'?t.accord:t.requis;
-  if(v.typeMismatch)return t.email;
-  if(v.tooShort||(c.minLength>0&&c.value.length<c.minLength))return t.court;
-  if(v.patternMismatch)return t.tel;
-  return '';
- }
- function valider(){
-  var premier=null;
-  champs.forEach(function(id){
-   var c=document.getElementById(id);
-   if(c.type!=='checkbox')c.value=c.value.trim();
-   var m=message(c);
-   erreur(id,m);
-   if(m&&!premier)premier=c;
-  });
-  var objet=f.querySelector('input[name=objet]:checked');
-  document.getElementById('err-objet').textContent=objet?'':M[lang].objet;
-  f.querySelector('.objet').classList.toggle('ko',!objet);
-  if(!objet&&!premier)premier=f.querySelector('input[name=objet]');
-  if(premier)premier.focus();
-  return !premier;
- }
- f.addEventListener('input',function(e){
-  var c=e.target;
-  if(c.name==='objet'){document.getElementById('err-objet').textContent='';f.querySelector('.objet').classList.remove('ko');return}
-  if(c.classList.contains('ko'))erreur(c.id,message(c));
- });
- function donnees(){
-  var d={};
-  ['prenom','nom','email','telephone','organisation','profil','message','site'].forEach(function(k){d[k]=(f.elements[k].value||'').trim()});
-  var o=f.querySelector('input[name=objet]:checked');d.objet=o?o.value:'';
-  d.consentement=f.elements.consentement.checked;d.langue=lang;
-  return d;
- }
- function echec(d){
-  var s=M[lang].sujet+d.prenom+' '+d.nom;
-  var corps=d.message+'\n\n'+d.prenom+' '+d.nom+(d.organisation?' – '+d.organisation:'')+'\n'+d.email+(d.telephone?'\n'+d.telephone:'');
-  var a=document.createElement('a');
-  a.href='mailto:'+MAIL+'?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent(corps);
-  a.textContent=M[lang].lien;
-  ok.textContent=M[lang].echec;ok.appendChild(a);ok.appendChild(document.createTextNode('.'));
-  ok.classList.add('ko');ok.style.display='block';
- }
- f.addEventListener('submit',function(e){
-  e.preventDefault();
-  ok.style.display='none';ok.classList.remove('ko');
-  if(!valider())return;
-  var d=donnees();
-  bouton.disabled=true;
-  fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
-   .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);
-    f.reset();ok.textContent=M[lang].merci;ok.style.display='block';ok.scrollIntoView({block:'nearest'})})
-   .catch(function(){echec(d)})
-   .then(function(){bouton.disabled=false});
- });
+ b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);h.classList.toggle('menu-ouvert',o)});
+ function fermerMenu(){n.classList.remove('open');b.setAttribute('aria-expanded','false');h.classList.remove('menu-ouvert')}
+ n.addEventListener('click',function(e){if(e.target.closest('a'))fermerMenu()});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&n.classList.contains('open')){fermerMenu();b.focus()}});
 })();
 </script>
 </body>

@@ -53,6 +53,15 @@ async function motDePasseOk(req: Request): Promise<boolean> {
   return diff === 0;
 }
 
+// Conservation limitée (RGPD) : on efface les messages de plus de 12 mois.
+// Appelé à chaque nouveau message et à chaque ouverture du tableau, pour que l'effacement
+// ait lieu même pendant les périodes sans nouveau message.
+function purgerAnciens(): Promise<void> {
+  const limite = new Date();
+  limite.setMonth(limite.getMonth() - CONSERVATION_MOIS);
+  return db.from(TABLE).delete().lt("recu_le", limite.toISOString()).then(() => {});
+}
+
 async function analyserEtEnregistrer(id: string): Promise<void> {
   try {
     const { data: m, error } = await db.from(TABLE).select("*").eq("id", id).single();
@@ -104,10 +113,7 @@ async function recevoir(req: Request): Promise<Response> {
   }
   EdgeRuntime.waitUntil(analyserEtEnregistrer(data.id));
 
-  // Conservation limitée (RGPD) : on efface les messages de plus de 12 mois.
-  const limite = new Date();
-  limite.setMonth(limite.getMonth() - CONSERVATION_MOIS);
-  EdgeRuntime.waitUntil(db.from(TABLE).delete().lt("recu_le", limite.toISOString()).then(() => {}));
+  EdgeRuntime.waitUntil(purgerAnciens());
 
   return json(200, { ok: true });
 }
@@ -118,6 +124,7 @@ async function tableau(req: Request, parties: string[]): Promise<Response> {
     return json(401, { erreur: "Mot de passe incorrect." });
   }
   if (req.method === "GET" && parties.length === 1) {
+    await purgerAnciens();
     const { data, error } = await db.from(TABLE)
       .select("id, recu_le, prenom, nom, email, telephone, organisation, profil, objet, message, langue, statut, analyse:tri, traite")
       .order("recu_le", { ascending: false }).limit(500);

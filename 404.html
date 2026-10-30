@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page introuvable – EVOLIA</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#051F3A">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/LexendVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body class="page-simple">
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="top">
+ <div class="wrap">
+  <a href="/" aria-label="EVOLIA, retour à l’accueil"><img src="/assets/logo-evolia.png" alt="EVOL’IA by ISC" width="203" height="54"></a>
+  <div class="top-actions">
+   <a class="retour" href="/"><span aria-hidden="true">←</span> <span class="retour-txt" data-en="Back to the site">Retour au site</span></a>
+   <div class="lang" role="group" aria-label="Langue / Language"><button type="button" data-lang="fr" aria-pressed="true">FR</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+  </div>
+ </div>
+</header>
+
+<main id="contenu">
+<section>
+ <div class="wrap">
+  <p class="label"><span data-en="Error 404">Erreur 404</span></p>
+  <h1 class="titre-page"><span data-en="This page does not exist.">Cette page n’existe pas.</span></h1>
+  <p class="intro"><span data-en="The address may be mistyped, or the page has moved.">L’adresse est peut-être mal saisie, ou la page a été déplacée.</span></p>
+  <div class="btns">
+   <a class="btn btn-r" href="/"><span data-en="Back to the home page">Retour à l’accueil</span></a>
+   <a class="lien-fleche" href="/contact"><span data-en="Contact us">Nous contacter</span></a>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap pied">
+  <div class="pied-id">
+   <img src="/assets/logo-evolia.png" alt="EVOL’IA by ISC" width="203" height="54">
+   <p><span data-en="EVOLIA · Non-profit association (loi 1901)&lt;br&gt;24 rue Jeanne d’Arc, 45000 Orléans, France">EVOLIA · Association loi 1901<br>24 rue Jeanne d’Arc, 45000 Orléans</span></p>
+  </div>
+  <ul class="pied-nav">
+   <li><a href="/#missions"><span data-en="Missions">Missions</span></a></li>
+   <li><a href="/#association"><span data-en="The association">L’association</span></a></li>
+   <li><a href="/#encadrement"><span data-en="Supervision">Encadrement</span></a></li>
+   <li><a href="/#equipe"><span data-en="Team">Équipe</span></a></li>
+   <li><a href="/contact"><span data-en="Contact us">Nous contacter</span></a></li>
+  </ul>
+  <ul class="pied-nav">
+   <li><a href="https://www.instagram.com/evolia.iscparis" rel="noopener" target="_blank">Instagram @evolia.iscparis<span class="vh" data-en=" (opens in a new tab)"> (nouvel onglet)</span></a></li>
+  </ul>
+ </div>
+ <div class="bandeau">
+  <div class="wrap">
+   <span>© 2026 EVOLIA</span>
+   <a href="/mentions-legales"><span data-en="Legal notice">Mentions légales</span></a>
+  </div>
+ </div>
+</footer>
+
+<script>
+(function(){
+ var T={fr:{title:'Page introuvable – EVOLIA',home:'EVOLIA, retour à l’accueil',skip:'Aller au contenu'},
+  en:{title:'Page not found – EVOLIA',home:'EVOLIA, back to the site',skip:'Skip to content'}};
+ function setLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-en]').forEach(function(el){
+   if(el.dataset.fr===undefined)el.dataset.fr=el.innerHTML;
+   el.innerHTML=l==='en'?el.dataset.en:el.dataset.fr;
+  });
+  var t=T[l];
+  document.title=t.title;
+  document.querySelector('header.top > .wrap > a').setAttribute('aria-label',t.home);
+  document.querySelector('.skip').textContent=t.skip;
+  document.querySelectorAll('.lang button').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.lang===l)});
+  try{localStorage.setItem('evolia-lang',l)}catch(e){}
+ }
+ document.querySelector('.lang').addEventListener('click',function(e){var l=e.target.dataset&&e.target.dataset.lang;if(l)setLang(l)});
+ var saved=null;try{saved=localStorage.getItem('evolia-lang')}catch(e){}
+ if(saved==='en')setLang('en');
+})();
+</script>
+</body>
+</html>
