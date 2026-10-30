@@ -8,6 +8,7 @@ Site vitrine statique (HTML/CSS) de l'association EVOLIA, ISC Paris, campus d'Or
 - `404.html` : page affichée pour une adresse inconnue
 - `actualites.html` + `actualites.json` + `actualites.js` : page Actualités (les 3 dernières sont aussi sur l'accueil)
 - `accessibilite.html` : déclaration d'accessibilité (`/accessibilite`)
+- `mesure.js` : bandeau cookies et Google Analytics (inactif tant que l'identifiant n'est pas renseigné)
 - `tableau-de-bord.html` : messages reçus par le formulaire, triés par l'agent IA (protégé par mot de passe)
 - `style.css` : styles de toutes les pages (police Lexend, couleurs de la charte, animations)
 - `assets/` : logos (dont `logo-evolia-transparent.svg`, sans fond), photos, icônes, polices
@@ -37,6 +38,14 @@ Ajouter un bloc au début de `actualites.json` (les actualités sont triées par
 ```
 
 Penser à la virgule entre deux blocs. Rien d'autre à modifier : l'accueil et la page Actualités se mettent à jour seuls.
+
+## Activer Google Analytics
+
+1. Créer une propriété Google Analytics 4 et récupérer son identifiant (`G-XXXXXXXXXX`).
+2. Le renseigner dans `mesure.js` : `var ID_GA='G-XXXXXXXXXX';`
+3. C'est tout : le bandeau « Accepter / Refuser » apparaît, le lien « Gérer les cookies » s'affiche dans le pied de page,
+   et Google Analytics ne se charge qu'après « Accepter ». La politique de sécurité (`vercel.json`) l'autorise déjà,
+   et les mentions légales décrivent ces cookies.
 
 ## Régénérer la plaquette PDF
 

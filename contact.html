@@ -34,7 +34,7 @@
    <div>
     <dl class="coord">
      <dt>Contact</dt><dd><span data-en="Atom Chauffard, president">Atom Chauffard, président</span></dd>
-     <dt><span data-en="Email">E-mail</span></dt><dd><a href="mailto:atom.chauffard@edu.iscparis.com">atom.chauffard@edu.iscparis.com</a></dd>
+     <dt><span data-en="Email">E-mail</span></dt><dd><a href="mailto:atom.chauffard1@gmail.com">atom.chauffard1@gmail.com</a></dd>
      <dt><span data-en="Phone">Téléphone</span></dt><dd><a href="tel:+33634410926">06 34 41 09 26</a></dd>
      <dt><span data-en="Brochure">Plaquette</span></dt><dd><a href="plaquette/EVOLIA_Plaquette_v02.pdf" class="pdf" download><span data-en="Download the brochure (PDF)">Télécharger la plaquette (PDF)</span></a></dd>
      <dt>Instagram</dt><dd><a href="https://www.instagram.com/evolia.iscparis" rel="noopener" target="_blank">@evolia.iscparis<span class="vh" data-en=" (opens in a new tab)"> (nouvel onglet)</span></a></dd>
@@ -121,7 +121,7 @@
  <div class="bandeau">
   <div class="wrap">
    <span>© 2026 EVOLIA</span>
-   <span class="liens-legaux"><a href="mentions-legales"><span data-en="Legal notice">Mentions légales</span></a> <a href="accessibilite"><span data-en="Accessibility">Accessibilité</span></a></span>
+   <span class="liens-legaux"><a href="mentions-legales"><span data-en="Legal notice">Mentions légales</span></a> <a href="accessibilite"><span data-en="Accessibility">Accessibilité</span></a> <a href="#" class="gerer-cookies" hidden><span data-en="Cookie settings">Gérer les cookies</span></a></span>
   </div>
  </div>
 </footer>
@@ -152,7 +152,7 @@
  // Formulaire de contact : envoi au serveur Supabase, qui enregistre le message et le fait trier par l'agent IA.
  // En cas d'échec, le visiteur peut toujours nous écrire par sa messagerie.
  var API='https://voylqdwqzvkydzdfxbob.supabase.co/functions/v1/contact';
- var MAIL='atom.chauffard@edu.iscparis.com';
+ var MAIL='atom.chauffard1@gmail.com'; // adresse qui reçoit les messages du formulaire
  var M={
   fr:{requis:'Ce champ est obligatoire.',email:'Saisissez une adresse e-mail valide, par exemple nom@entreprise.fr.',tel:'Saisissez un numéro valide, par exemple 06 12 34 56 78.',court:'Votre message est un peu court : 20 caractères minimum.',objet:'Choisissez l’objet de votre message.',accord:'Cochez cette case pour envoyer votre message.',merci:'Merci, votre message est bien parti. Un membre de l’équipe vous répondra sous 48 h ouvrées à l’adresse indiquée.',echec:'L’envoi n’a pas abouti. Réessayez dans un instant, ou ',lien:'écrivez-nous par e-mail',sujet:'Contact depuis le site EVOLIA – ',piece:'Pièce jointe : PDF ou Word uniquement, 5 Mo maximum.',envoiPiece:'Envoi de la pièce jointe…',pieceEchec:'La pièce jointe n’a pas pu être envoyée : vous pourrez nous la transmettre par e-mail en réponse à notre message.'},
   en:{requis:'This field is required.',email:'Enter a valid email address, for example name@company.com.',tel:'Enter a valid phone number.',court:'Your message is a little short: 20 characters minimum.',objet:'Choose the subject of your message.',accord:'Tick this box to send your message.',merci:'Thank you, your message has been sent. A member of the team will reply within 2 working days to the address you gave.',echec:'Sending failed. Please try again in a moment, or ',lien:'email us',sujet:'Contact from the EVOLIA website – ',piece:'Attachment: PDF or Word only, 5 MB maximum.',envoiPiece:'Sending the attachment…',pieceEchec:'The attachment could not be sent: you can send it to us by email when replying to our message.'}
@@ -243,5 +243,6 @@
  });
 })();
 </script>
+<script src="/mesure.js" defer></script>
 </body>
 </html>

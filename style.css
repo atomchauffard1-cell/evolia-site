@@ -89,6 +89,12 @@ h2.label,h3.label,p.label{font-size:13px;line-height:1.4;font-weight:600;letter-
 .domaines h3{grid-column:1;grid-row:2;font-size:clamp(22px,2.2vw,30px);line-height:1.2;letter-spacing:-.018em;font-weight:600}
 .domaines p{grid-column:2;grid-row:2;margin:0;font-size:17px;color:var(--ardoise);max-width:34em}
 
+/* bande « Ils nous soutiennent » */
+section.soutiens{padding:44px 0;border-bottom:1px solid var(--ligne)}
+.soutiens .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px 48px}
+.soutiens h2.label{margin:0}
+.logos{list-style:none;margin:0;padding:0;display:flex;align-items:center;flex-wrap:wrap;gap:24px 56px}
+.logos img{height:54px;width:auto}
 /* bandeau « missions sur mesure » */
 .surmesure{background:var(--nuit);color:var(--blanc);padding:104px 0}
 .surmesure .wrap{display:grid;grid-template-columns:7fr 5fr;gap:32px 64px;align-items:end}
@@ -205,6 +211,15 @@ form button[disabled]{opacity:.65;cursor:wait}
 .retour{font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap}
 .retour:hover{text-decoration:underline}
 
+/* bandeau cookies (affiché seulement si la mesure d'audience est configurée) */
+.bandeau-cookies{position:fixed;z-index:50;left:var(--marge);bottom:24px;max-width:520px;background:var(--nuit);color:var(--blanc);padding:22px 24px;box-shadow:0 12px 40px rgba(3,21,42,.35)}
+.bandeau-cookies p{margin:0 0 16px;font-size:14px;line-height:1.55;color:#DCE4EC}
+.bandeau-cookies a{color:var(--blanc)}
+.bandeau-cookies .choix{display:flex;gap:12px}
+.bandeau-cookies button{flex:1;padding:12px 16px;font:600 15px/1.2 "Lexend",Arial,sans-serif;color:var(--blanc);background:none;border:1px solid rgba(255,255,255,.75);cursor:pointer}
+.bandeau-cookies button:hover{background:var(--blanc);color:var(--nuit)}
+.bandeau-cookies :focus-visible{outline-color:var(--blanc)}
+@media (max-width:560px){.bandeau-cookies{left:12px;right:12px;bottom:12px;max-width:none}}
 /* pied de page */
 footer{background:var(--nuit-fonce);color:#AFC0D2;font-size:15px;padding:72px 0 0}
 .pied{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px 48px}
